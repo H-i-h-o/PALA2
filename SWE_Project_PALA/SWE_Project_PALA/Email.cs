@@ -40,15 +40,37 @@ namespace SWE_Project_PALA
 
                     if (topLevelDomain.Length > 1)
                     {
-                        topLevelDomain.Remove(0, 1);
+                        topLevelDomain = topLevelDomain.TrimStart('.');
                     }
 
-                    if (topLevelDomain.Length >= 2 && topLevelDomain.Length <= 4 &&
-                        Regex.IsMatch(topLevelDomain, @"^[a-zA-Z]+$"))
+                    if (topLevelDomain.Length >= 2 && topLevelDomain.Length <= 4)
                     {
-                        if (emailAddress.Split('@')[0].Length >= 1)
+                        if (emailAddress.IndexOf("@") >= 1)
                         {
-                            if (Regex.IsMatch(topLevelDomain, @"^[a-zA-Z0-9!#%&'*+-{=?^_´{|}~]+$"))
+                            string[] LetterArray = new[]
+                            {
+                                "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s",
+                                "t", "u", "v", "w", "x", "y", "z"
+                            };
+                            string[] NumbersArray = new[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+                            string[] SpecialCharArray = new[] { "!", "#", "%", "&", "'", "*", "+", "-", "/", "=", "^", "_", "´", "{", "|", "}", "~", ".", "@" };
+                            string emailAddressTest = String.Empty;
+                            emailAddressTest = emailAddress;
+
+                            foreach (var Char in LetterArray)
+                            {
+                                emailAddressTest = emailAddressTest.Replace(Char, "");
+                            }
+                            foreach (var Char in NumbersArray)
+                            {
+                                emailAddressTest = emailAddressTest.Replace(Char, "");
+                            }
+                            foreach (var Char in SpecialCharArray)
+                            {
+                                emailAddressTest = emailAddressTest.Replace(Char, "");
+                            }
+
+                            if (emailAddressTest.Length == 0)
                             {
                                 return true;
                             }
