@@ -13,16 +13,33 @@ namespace SWE_Project_PALA
         public string FirstName { private set;  get; }
         public string LastName { private set; get; }
         public Email EmailAddress { private set; get; }
+        public int CustomerNumber { private set; get; }
         public int AccountBalance { private set; get; }
         public DateTime LastAccess { private set; get; }
 
-        public Customer(string firstName, string lastName, string emailAddress)
+        public Customer(string firstName, string lastName, string emailAddress, int customerNumber)
         {
             FirstName = firstName;
             LastName = lastName;
             EmailAddress = new Email(emailAddress);
             AccountBalance = 0;
             LastAccess = DateTime.Today;
+            CustomerNumber = customerNumber;
+        }
+        public Customer(string firstName, string lastName, string emailAddress, int customerNumber, DateTime lastAccess)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            EmailAddress = new Email(emailAddress);
+            AccountBalance = 0;
+            LastAccess = lastAccess;
+            CustomerNumber = customerNumber;
+        }
+
+        public static Customer parsePerson(string text)
+        {
+            string[] parts = text.Split(';');
+            return new Customer(parts[1], parts[2], parts[3], Convert.ToInt32(parts[0]), Convert.ToDateTime(parts[4]));
         }
 
         public void ChangeToAccountBalance(int expense)
@@ -38,7 +55,7 @@ namespace SWE_Project_PALA
 
         public string PrintCustomer()
         {
-            return FirstName + ", " + LastName + ", " + EmailAddress.Print() + ", " + AccountBalance + ", " + LastAccess.ToShortDateString();
+            return CustomerNumber + ";" + FirstName + ", " + LastName + ", " + EmailAddress.Print() + ", " + AccountBalance + ", " + LastAccess.ToShortDateString();
         }
 
         public void ChangeName(string firstName, string lastName)
@@ -52,7 +69,10 @@ namespace SWE_Project_PALA
             EmailAddress.ChangeEmail(emailAddress);
         }
 
-
+        public override string ToString()
+        {
+            return CustomerNumber + "   " + FirstName + "   " + LastName + "    " + EmailAddress.Print() + "    " + AccountBalance + "  " + LastAccess.ToShortDateString();
+        }
     }
 }
 

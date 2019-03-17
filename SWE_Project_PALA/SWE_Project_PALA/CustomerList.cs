@@ -8,7 +8,8 @@ namespace SWE_Project_PALA
 {
     public class CustomerList
     {
-        public List<Customer> CustList;
+        public List<Customer> CustList = new List<Customer>();
+        public event EventHandler CustomerListChangedHappened;
 
         public CustomerList()
         {
@@ -31,6 +32,7 @@ namespace SWE_Project_PALA
             if (e.GetType() == typeof(EventArgsNewCustomer))
             {
                 CustList.Add(((EventArgsNewCustomer)e).NewCustomer);
+                CustomerListChanged();
             }
         }
 
@@ -39,8 +41,9 @@ namespace SWE_Project_PALA
                
         }
 
-
-
-
+        private void CustomerListChanged()
+        {
+            CustomerListChangedHappened?.Invoke(this, new EventArgs());
+        }
     }
 }

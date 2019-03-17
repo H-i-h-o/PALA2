@@ -12,22 +12,21 @@ namespace SWE_Project_PALA
 {
     public partial class CustomerForm : Form
     {
-        private bool InputOkay = false;
         public event EventHandler NewCustomerAvailable;
+        private readonly Form1 _MainForm;
 
-        public CustomerForm()
+        public CustomerForm(Form1 mainForm)
         {
-            CustomerList CustList = new CustomerList();
-            
+            _MainForm = mainForm;
             InitializeComponent();
         }
 
         private void btn_Save_Click(object sender, EventArgs e)
         {
-            if (InputOkay)
+            if (Email.CheckEmailInput(txtBoxEmail.Text))
             {
-                Customer NewCustomer = new Customer(txtBoxFirstName.Text, txtBoxLastName.Text, txtBoxEmail.Text);
-                NewCustomerAvailable(this, new EventArgsNewCustomer(NewCustomer));
+                Customer NewCustomer = new Customer(txtBoxFirstName.Text, txtBoxLastName.Text, txtBoxEmail.Text, _MainForm.GetNewCustomerNumber());
+                NewCustomerAvailable?.Invoke(this, new EventArgsNewCustomer(NewCustomer));
                 this.Close();
             }
         }
