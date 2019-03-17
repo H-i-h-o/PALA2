@@ -38,6 +38,7 @@ namespace SWE_Project_PALA
 
         public static Customer parsePerson(string text)
         {
+            
             string[] parts = text.Split(';');
             return new Customer(parts[1], parts[2], parts[3], Convert.ToInt32(parts[0]), Convert.ToDateTime(parts[4]));
         }
