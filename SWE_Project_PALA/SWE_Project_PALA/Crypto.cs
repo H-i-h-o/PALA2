@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SWE_Project_PALA
 {
-    class Crypto
+    public class Crypto
     {
         public static string Encode(string Input)
         {
