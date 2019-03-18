@@ -14,21 +14,51 @@ namespace SWE_Project_PALA
     {
         public event EventHandler NewCustomerAvailable;
         private readonly Form1 _MainForm;
+        private Customer Cust;
+        private bool importedPerson;
 
         public CustomerForm(Form1 mainForm)
         {
             _MainForm = mainForm;
             InitializeComponent();
+            importedPerson = false;
+        }
+
+        public CustomerForm(Customer cust, Form1 mainForm)
+        {
+            InitializeComponent();
+
+            _MainForm = mainForm;
+            Cust = cust;
+            txtBoxEmail.Text = cust.EmailAddress.Print();
+            txtBoxFirstName.Text = cust.FirstName;
+            txtBoxLastName.Text = cust.LastName;
+
+            importedPerson = true;
         }
 
         private void btn_Save_Click(object sender, EventArgs e)
         {
-            if (Email.CheckEmailInput(txtBoxEmail.Text))
+            if (importedPerson)
             {
-                Customer NewCustomer = new Customer(txtBoxFirstName.Text, txtBoxLastName.Text, txtBoxEmail.Text, _MainForm.GetNewCustomerNumber());
-                NewCustomerAvailable?.Invoke(this, new EventArgsNewCustomer(NewCustomer));
-                this.Close();
+                if (Email.CheckEmailInput(txtBoxEmail.Text))
+                {
+                    Cust.ChangeEmail(txtBoxEmail.Text);
+                    Cust.ChangeName(txtBoxFirstName.Text,txtBoxLastName.Text);
+                    this.Close();
+                }
             }
+            else
+            {
+                if (Email.CheckEmailInput(txtBoxEmail.Text))
+                {
+                    Cust = new Customer(txtBoxFirstName.Text, txtBoxLastName.Text, txtBoxEmail.Text,
+                        _MainForm.GetNewCustomerNumber());
+                    NewCustomerAvailable?.Invoke(this, new EventArgsNewCustomer(Cust));
+                    this.Close();
+                }
+            }
+            _MainForm.RefreshListBox(this, new EventArgs());
         }
 
         private void btn_Cancle_Click(object sender, EventArgs e)

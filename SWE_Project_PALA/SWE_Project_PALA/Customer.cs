@@ -58,6 +58,10 @@ namespace SWE_Project_PALA
         {
             return CustomerNumber + ";" + FirstName + ", " + LastName + ", " + EmailAddress.Print() + ", " + AccountBalance + ", " + LastAccess.ToShortDateString();
         }
+        public string PrintCustomerCrypted()
+        {
+            return CustomerNumber + ";" + FirstName + ", " + LastName + ", " + EmailAddress.Print() + ", " + AccountBalance + ", " + LastAccess.ToShortDateString();
+        }
 
         public void ChangeName(string firstName, string lastName)
         {

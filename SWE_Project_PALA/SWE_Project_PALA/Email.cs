@@ -47,32 +47,48 @@ namespace SWE_Project_PALA
                     {
                         if (emailAddress.IndexOf("@") >= 1)
                         {
-                            string[] LetterArray = new[]
+                            if (emailAddress[0] != '.' && emailAddress[emailAddress.Length-1] != '.')
                             {
-                                "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s",
-                                "t", "u", "v", "w", "x", "y", "z"
-                            };
-                            string[] NumbersArray = new[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
-                            string[] SpecialCharArray = new[] { "!", "#", "%", "&", "'", "*", "+", "-", "/", "=", "^", "_", "´", "{", "|", "}", "~", ".", "@" };
-                            string emailAddressTest = String.Empty;
-                            emailAddressTest = emailAddress;
+                                if (emailAddress[emailAddress.IndexOf('@') - 1] != '.' &&
+                                    emailAddress[emailAddress.IndexOf('@') + 1] != '.')
+                                {
+                                    string[] LetterArray = new[]
+                                    {
+                                        "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p",
+                                        "q",
+                                        "r", "s",
+                                        "t", "u", "v", "w", "x", "y", "z"
+                                    };
+                                    string[] NumbersArray = new[] {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
+                                    string[] SpecialCharArray = new[]
+                                    {
+                                        "!", "#", "%", "&", "'", "*", "+", "-", "/", "=", "^", "_", "´", "{", "|", "}",
+                                        "~",
+                                        ".", "@"
+                                    };
+                                    string emailAddressTest = String.Empty;
+                                    emailAddressTest = emailAddress;
 
-                            foreach (var Char in LetterArray)
-                            {
-                                emailAddressTest = emailAddressTest.Replace(Char, "");
-                            }
-                            foreach (var Char in NumbersArray)
-                            {
-                                emailAddressTest = emailAddressTest.Replace(Char, "");
-                            }
-                            foreach (var Char in SpecialCharArray)
-                            {
-                                emailAddressTest = emailAddressTest.Replace(Char, "");
-                            }
+                                    foreach (var Char in LetterArray)
+                                    {
+                                        emailAddressTest = emailAddressTest.Replace(Char, "");
+                                    }
+                                    foreach (var Char in NumbersArray)
+                                    {
+                                        emailAddressTest = emailAddressTest.Replace(Char, "");
+                                    }
+                                    foreach (var Char in SpecialCharArray)
+                                    {
+                                        emailAddressTest = emailAddressTest.Replace(Char, "");
+                                    }
 
-                            if (emailAddressTest.Length == 0)
-                            {
-                                return true;
+                                    if (emailAddressTest.Length == 0)
+                                    {
+                                        return true;
+                                    }
+                                    return false;
+                                }
+                                return false;
                             }
                             return false;
                         }

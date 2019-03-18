@@ -40,6 +40,39 @@ namespace SWE_Project_PALA
             {
                 listBox1.Items.Add(Cust);
             }
+            btnEdit.Enabled = false;
+        }
+
+        private void listBox1_DoubleClick(object sender, EventArgs e)
+        {
+            object selectedItem = listBox1.SelectedItem;
+            if (selectedItem.GetType() == typeof(Customer))
+            {
+                CustomerBalanceForm custBalanceForm = new CustomerBalanceForm(this, (Customer)selectedItem);
+                custBalanceForm.Show();
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedIndex >= 0)
+            {
+                object selectedItem = listBox1.SelectedItem;
+                if (selectedItem.GetType() == typeof(Customer))
+                {
+                    CustomerForm CustForm = new CustomerForm(((Customer) selectedItem), this);
+                    CustForm.Show();
+                }
+            }
+        }
+
+        private void listBox1_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedIndex >= 0)
+            {
+
+                btnEdit.Enabled = true;
+            }
         }
     }
 }

@@ -47,7 +47,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Crypto.cs" />
+    <Compile Include="CSVHandling.cs" />
     <Compile Include="Customer.cs" />
+    <Compile Include="CustomerBalanceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomerBalanceForm.Designer.cs">
+      <DependentUpon>CustomerBalanceForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,6 +72,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CustomerBalanceForm.resx">
+      <DependentUpon>CustomerBalanceForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CustomerForm.resx">
       <DependentUpon>CustomerForm.cs</DependentUpon>
     </EmbeddedResource>
