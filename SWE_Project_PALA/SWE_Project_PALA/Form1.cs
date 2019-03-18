@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,9 +14,11 @@ namespace SWE_Project_PALA
     public partial class Form1 : Form
     {
         public CustomerList CustList = new CustomerList();
-        
+        private readonly string Path = Application.StartupPath;
+
         public Form1()
         {
+            CustList = LoadCustomList();
             CustList.CustomerListChangedHappened += new EventHandler(RefreshListBox);
             InitializeComponent();
         }
@@ -41,6 +44,7 @@ namespace SWE_Project_PALA
                 listBox1.Items.Add(Cust);
             }
             btnEdit.Enabled = false;
+            SaveCustomList();
         }
 
         private void listBox1_DoubleClick(object sender, EventArgs e)
@@ -70,8 +74,24 @@ namespace SWE_Project_PALA
         {
             if (listBox1.SelectedIndex >= 0)
             {
-
                 btnEdit.Enabled = true;
+            }
+        }
+
+        private void SaveCustomList()
+        {
+            CSVHandling.SaveCustomerListToCSV(CustList,Path);
+        }
+
+        private CustomerList LoadCustomList()
+        {
+            if (File.Exists(Path))
+            {
+                return CSVHandling.LoadCustomerListFromCSV(Path);
+            }
+            else
+            {
+                return new CustomerList();
             }
         }
     }

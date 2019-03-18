@@ -10,20 +10,18 @@ namespace SWE_Project_PALA
 {
     public class CSVHandling
     {
-        private CustomerList CustList = new CustomerList();
 
-        public CSVHandling(CustomerList custList)
+        public CSVHandling()
         {
-            CustList = custList;
         }
 
-        private void SaveCustomerListToCSV(string Path)
+        public static void SaveCustomerListToCSV(CustomerList custList, string path)
         {
-            StreamWriter SWriter = new StreamWriter(Path);
+            StreamWriter SWriter = new StreamWriter(path);
 
             try
             {
-                SWriter.Write(CustList.PrintCustomerList());
+                SWriter.Write(custList.PrintCustomerList());
             }
             catch (Exception ex)
             {
@@ -35,21 +33,23 @@ namespace SWE_Project_PALA
             }
         }
 
-        private void LoadCustomerListFromCSV(string Path)
+        public static CustomerList LoadCustomerListFromCSV(string path)
         {
-            StreamReader SReader = new StreamReader(Path);
-            CustList.CustList.Clear(); //ACHTUNG evtl Fehler
+            StreamReader SReader = new StreamReader(path);
+            CustomerList CustList = new CustomerList();
 
             try
             {
                 while (SReader.Peek() != -1)
                 {
-                    CustList.CustList.Add(Customer.parsePerson(SReader.ReadLine()));
+                    CustList.CustList.Add(Customer.parseCustomer(SReader.ReadLine()));
                 }
+                return CustList;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("A error occured: the customer list could not be loaded!" + Environment.NewLine + ex.Message);
+                return CustList;
             }
             finally
             {

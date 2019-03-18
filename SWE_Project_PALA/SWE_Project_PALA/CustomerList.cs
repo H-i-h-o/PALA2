@@ -38,54 +38,49 @@ namespace SWE_Project_PALA
             }
         }
 
-        public void EditCustomer(object sender, EventArgs e)
-        {
-               
-        }
-
         private void CustomerListChanged()
         {
             CustomerListChangedHappened?.Invoke(this, new EventArgs());
         }
 
-        private void SaveCustomerListToCSV(string Path)
-        {
-            StreamWriter SWriter = new StreamWriter(Path);
+        //private void SaveCustomerListToCSV(string Path)
+        //{
+        //    StreamWriter SWriter = new StreamWriter(Path);
 
-            try
-            {
-                SWriter.Write(PrintCustomerList());
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show("A error occured: the customer list could not be saved!" + Environment.NewLine + ex.Message);
-            }
-            finally
-            {
-                SWriter.Close();
-            }
-        }
+        //    try
+        //    {
+        //        SWriter.Write(PrintCustomerList());
+        //    }
+        //    catch(Exception ex)
+        //    {
+        //        MessageBox.Show("A error occured: the customer list could not be saved!" + Environment.NewLine + ex.Message);
+        //    }
+        //    finally
+        //    {
+        //        SWriter.Close();
+        //    }
+        //}
 
-        private void LoadCustomerListFromCSV(string Path)
-        {
-            StreamReader SReader = new StreamReader(Path);
-            CustList.Clear(); //ACHTUNG evtl Fehler
+        //private void LoadCustomerListFromCSV(string Path)
+        //{
+        //    StreamReader SReader = new StreamReader(Path);
+        //    CustList.Clear(); //ACHTUNG evtl Fehler
 
-            try
-            {
-                while(SReader.Peek() != -1)
-                {
-                    CustList.Add(Customer.parsePerson(SReader.ReadLine()));
-                }
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show("A error occured: the customer list could not be loaded!" + Environment.NewLine + ex.Message);
-            }
-            finally
-            {
-                SReader.Close();
-            }
-        }
+        //    try
+        //    {
+        //        while(SReader.Peek() != -1)
+        //        {
+        //            CustList.Add(Customer.parsePerson(SReader.ReadLine()));
+        //        }
+        //    }
+        //    catch(Exception ex)
+        //    {
+        //        MessageBox.Show("A error occured: the customer list could not be loaded!" + Environment.NewLine + ex.Message);
+        //    }
+        //    finally
+        //    {
+        //        SReader.Close();
+        //    }
+        //}
     }
 }
