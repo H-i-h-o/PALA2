@@ -24,7 +24,7 @@ namespace SWE_Project_PALA
 
             foreach (Customer cust in CustList)
             {
-                CSVCustomerStringBuilder.AppendLine(cust.PrintCustomer());
+                CSVCustomerStringBuilder.AppendLine(cust.PrintCustomer());//change to PrintCustomerCrypt() !!!
             }
             return CSVCustomerStringBuilder;
         }

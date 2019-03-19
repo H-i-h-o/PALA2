@@ -42,7 +42,7 @@ namespace SWE_Project_PALA
             {
                 while (SReader.Peek() != -1)
                 {
-                    CustList.CustList.Add(Customer.parseCustomer(SReader.ReadLine()));
+                    CustList.CustList.Add(Customer.parseCustomer(SReader.ReadLine()));//change to ParseAndDecryptCustomer!!
                 }
                 return CustList;
             }

@@ -47,14 +47,17 @@ namespace SWE_Project_PALA
         public static Customer parseCustomer(string text)
         {
             string[] parts = text.Split(';');
-            return new Customer(parts[1], parts[2], parts[3], Convert.ToInt32(parts[0]), Convert.ToDateTime(parts[4]));
+            return new Customer(int.Parse(parts[0]), parts[1], parts[2], parts[3], int.Parse(parts[4]), DateTime.Parse(parts[5]));
+            //return new Customer(parts[1], parts[2], parts[3], Convert.ToInt32(parts[0]), Convert.ToDateTime(parts[4]));
         }
 
         public static Customer ParseAndDecryptCustomer(string text)
         {
             string[] parts = text.Split(';');
+
             // CustomerNumber + ";" + FirstName + ", " + LastName + ", " + EmailAddress.Print() + ", " + AccountBalance + ", " + LastAccess.ToShortDateString();
-            return new Customer(Crypto.Decode(parts[1]), Crypto.Decode(parts[2]), Crypto.Decode(parts[3]), Convert.ToInt32(Crypto.Decode(parts[0])), Convert.ToDateTime(Crypto.Decode(parts[4])));
+            //return new Customer(Crypto.Decode(parts[1]), Crypto.Decode(parts[2]), Crypto.Decode(parts[3]), Convert.ToInt32(Crypto.Decode(parts[0])), Convert.ToDateTime(Crypto.Decode(parts[4])));
+            return new Customer(int.Parse(Crypto.Decode(parts[0])), Crypto.Decode(parts[1]), Crypto.Decode(parts[2]), Crypto.Decode(parts[3]), int.Parse(Crypto.Decode(parts[4])), DateTime.Parse(Crypto.Decode(parts[5])));
         }
 
         public void ChangeToAccountBalance(int expense)
@@ -70,13 +73,13 @@ namespace SWE_Project_PALA
 
         public string PrintCustomer()
         {
-            return CustomerNumber + ";" + FirstName + ", " + LastName + ", " + EmailAddress.Print() + ", " + AccountBalance + ", " + LastAccess.ToShortDateString();
+            return CustomerNumber + ";" + FirstName + ";" + LastName + ";" + EmailAddress.Print() + ";" + AccountBalance + ";" + LastAccess.ToShortDateString();
         }
 
         public string PrintCustomerCrypt()
         {
-            return Crypto.Encode(Convert.ToString(CustomerNumber)) + ";" + Crypto.Encode(FirstName) + ", " + Crypto.Encode(LastName) 
-                + ", " + Crypto.Encode(EmailAddress.Print() + ", " + Crypto.Encode(Convert.ToString(AccountBalance)) + ", " + Crypto.Encode(LastAccess.ToShortDateString()));
+            return Crypto.Encode(Convert.ToString(CustomerNumber)) + ";" + Crypto.Encode(FirstName) + ";" + Crypto.Encode(LastName) 
+                + ";" + Crypto.Encode(EmailAddress.Print() + ";" + Crypto.Encode(Convert.ToString(AccountBalance.ToString())) + ";" + Crypto.Encode(LastAccess.ToShortDateString()));
         }
 
         public void ChangeName(string firstName, string lastName)

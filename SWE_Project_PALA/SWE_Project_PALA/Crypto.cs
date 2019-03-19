@@ -10,7 +10,7 @@ namespace SWE_Project_PALA
     {
         public static string Encode(string input)
         {
-            int Shift = 50;
+            int Shift = 10;
             string Output = string.Empty;
 
             foreach (char character in input)
@@ -22,7 +22,7 @@ namespace SWE_Project_PALA
         }
         public static string Decode(string input)
         {
-            int Shift = -50;
+            int Shift = -10;
             string Output = string.Empty;
 
             foreach (char character in input)
