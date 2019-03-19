@@ -14,7 +14,8 @@ namespace SWE_Project_PALA
     public partial class Form1 : Form
     {
         public CustomerList CustList = new CustomerList();
-        private readonly string Path = Application.StartupPath;
+        private readonly string Path = Application.StartupPath + "\\CList.csv";
+        
 
         public Form1()
         {
