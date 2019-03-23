@@ -8,29 +8,52 @@ namespace SWE_Project_PALA
 {
     public class Crypto
     {
-        public static string Encode(string input)
+        private static string ShiftString(string Input, int Shift)
         {
-            int Shift = 10;
             string Output = string.Empty;
 
-            foreach (char character in input)
+            foreach (char character in Input)
             {
                 Output += Convert.ToChar(Convert.ToInt32(character) + Shift);
             }
 
             return Output;
         }
-        public static string Decode(string input)
+        
+        public static string EncodeLine(string [] input)
         {
-            int Shift = -10;
-            string Output = string.Empty;
+            string EncodedLine = string.Empty;
 
-            foreach (char character in input)
+            foreach (string str in input)
             {
-                Output += Convert.ToChar(Convert.ToInt32(character) + Shift);
+                EncodedLine += ShiftString(str, 1) + ";";
+            }
+            
+            return EncodedLine;
+        }
+        public static string[] DecodeLine(string input)
+        {
+            string[] Columns = input.Split(';');
+            string[] output = new string[Columns.Length];
+
+            for (int i = 0; i < Columns.Length; i++)
+            {
+                output[i] = ShiftString(Columns[i], -1);
             }
 
-            return Output;
+            return output;
         }
+        //private static string Encode2(string input)
+        //{
+
+        //    return "";
+        //}
+        //private static string Decode2(string input)
+        //{
+
+        //    return "";
+        //}
+
+
     }
 }

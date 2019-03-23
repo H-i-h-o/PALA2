@@ -53,11 +53,13 @@ namespace SWE_Project_PALA
 
         public static Customer ParseAndDecryptCustomer(string text)
         {
-            string[] parts = text.Split(';');
+            //string[] parts = text.Split(';');
+
+            string[] parts = Crypto.DecodeLine(text);
 
             // CustomerNumber + ";" + FirstName + ", " + LastName + ", " + EmailAddress.Print() + ", " + AccountBalance + ", " + LastAccess.ToShortDateString();
             //return new Customer(Crypto.Decode(parts[1]), Crypto.Decode(parts[2]), Crypto.Decode(parts[3]), Convert.ToInt32(Crypto.Decode(parts[0])), Convert.ToDateTime(Crypto.Decode(parts[4])));
-            return new Customer(int.Parse(Crypto.Decode(parts[0])), Crypto.Decode(parts[1]), Crypto.Decode(parts[2]), Crypto.Decode(parts[3]), int.Parse(Crypto.Decode(parts[4])), DateTime.Parse(Crypto.Decode(parts[5])));
+            return new Customer(int.Parse(parts[0]), parts[1], parts[2], parts[3], int.Parse(parts[4]), DateTime.Parse(parts[5]));
         }
 
         public void ChangeToAccountBalance(int expense)
@@ -78,8 +80,9 @@ namespace SWE_Project_PALA
 
         public string PrintCustomerCrypt()
         {
-            return Crypto.Encode(Convert.ToString(CustomerNumber)) + ";" + Crypto.Encode(FirstName) + ";" + Crypto.Encode(LastName) 
-                + ";" + Crypto.Encode(EmailAddress.Print() + ";" + Crypto.Encode(Convert.ToString(AccountBalance.ToString())) + ";" + Crypto.Encode(LastAccess.ToShortDateString()));
+            return Crypto.EncodeLine(new string[] { CustomerNumber.ToString(), FirstName, LastName, EmailAddress.Print(), AccountBalance.ToString(), LastAccess.ToShortDateString() });
+
+            //return Crypto.Encode(CustomerNumber.ToString()) + ";" + Crypto.Encode(FirstName) + ";" + Crypto.Encode(LastName) + ";" + Crypto.Encode(this.EmailAddress.EmailAddress.ToString() + ";" + Crypto.Encode(AccountBalance.ToString()) + ";" + Crypto.Encode(LastAccess.ToShortDateString()));
         }
 
         public void ChangeName(string firstName, string lastName)
