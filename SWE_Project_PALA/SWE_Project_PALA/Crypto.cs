@@ -34,9 +34,10 @@ namespace SWE_Project_PALA
         public static string[] DecodeLine(string input)
         {
             string[] Columns = input.Split(';');
-            string[] output = new string[Columns.Length];
+            //Columns.Take(Columns.Length-1).Skip(1).ToArray();
+            string[] output = new string[Columns.Length-1];
 
-            for (int i = 0; i < Columns.Length; i++)
+            for (int i = 0; i < Columns.Length-1; i++)
             {
                 output[i] = ShiftString(Columns[i], -1);
             }
