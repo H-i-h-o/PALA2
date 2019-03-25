@@ -24,6 +24,14 @@ namespace SWE_Project_PALA
             InitializeComponent();
             CustList = LoadCustomList();
             RefreshListBox(null, null);
+
+            //Show Passwordform
+            //PasswordForm PWForm = new PasswordForm();
+            //if ((PWForm.ShowDialog() != DialogResult.OK) || !PWForm.PasswordWasOK)
+            //{
+            //    this.Close();
+            //}
+
         }
 
         private void btnAddCust_Click(object sender, EventArgs e)

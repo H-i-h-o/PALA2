@@ -17,7 +17,17 @@ namespace SWE_Project_PALA
                
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            PasswordForm PWForm = new PasswordForm();
+            if ((PWForm.ShowDialog() != DialogResult.OK) || !PWForm.PasswordWasOK)
+            {
+                
+            }
+            else
+            {
+                Application.Run(new Form1());
+            }
+            
         }
     }
 }
