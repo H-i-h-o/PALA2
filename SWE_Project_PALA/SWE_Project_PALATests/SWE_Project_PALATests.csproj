@@ -55,6 +55,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CryptoTests.cs" />
     <Compile Include="CSVHandlingTests.cs" />
+    <Compile Include="EmailTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SWE_Project_PALA\SWE_Project_PALA.csproj">

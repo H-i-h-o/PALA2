@@ -20,9 +20,9 @@ namespace SWE_Project_PALA.Tests
             StringBuilder CustListString = new StringBuilder();
             for (int i = 0; i < 10; i++)
             {
-                //Auskommentiert um andere Tests durchzuführen
+                //Commented for running other tests
                 //Cust = new Customer("Vorname" + i.ToString(), "Nachname" + i.ToString(), "Email" + 1 + "@com.at");
-                //CustList.AddCustomer(this,new EventArgsNewCustomer(Cust));
+                //CustList.AddCustomer(this, new EventArgsNewCustomer(Cust));
 
                 //CustListString.AppendLine("Vorname" + i.ToString() + "; " + "Nachname" + i.ToString() + "; " + "Email" + 1 + "@com.at");
             }
