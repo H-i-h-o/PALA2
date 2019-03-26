@@ -10,11 +10,11 @@ namespace SWE_Project_PALA
 {
     public class CSVHandling
     {
-
-        public CSVHandling()
-        {
-        }
-
+        /// <summary>
+        /// Saves all items of custlist encoded to csv-file at path
+        /// </summary>
+        /// <param name="custList"></param>
+        /// <param name="path"></param>
         public static void SaveCustomerListToCSV(CustomerList custList, string path)
         {
             StreamWriter SWriter = new StreamWriter(path);
@@ -33,6 +33,11 @@ namespace SWE_Project_PALA
             }
         }
 
+        /// <summary>
+        /// Loads all lines from the csv-file with path, parses a Customer for each line and returns all Customers in a CustomerList
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
         public static CustomerList LoadCustomerListFromCSV(string path)
         {
             StreamReader SReader = new StreamReader(path);

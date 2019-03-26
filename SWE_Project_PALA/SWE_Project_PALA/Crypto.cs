@@ -8,6 +8,12 @@ namespace SWE_Project_PALA
 {
     public class Crypto
     {
+        /// <summary>
+        /// Shifts each character of the Input by Shift
+        /// </summary>
+        /// <param name="Input"></param>
+        /// <param name="Shift"></param>
+        /// <returns></returns>
         private static string ShiftString(string Input, int Shift)
         {
             string Output = string.Empty;
@@ -19,7 +25,13 @@ namespace SWE_Project_PALA
 
             return Output;
         }
-        
+
+        /// <summary>
+        /// Encodes all elements of input by applying a shift to each character of the strings, 
+        /// appends a semiconol to each string and concatenates the strings
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         public static string EncodeLine(string [] input)
         {
             string EncodedLine = string.Empty;
@@ -31,6 +43,12 @@ namespace SWE_Project_PALA
             
             return EncodedLine;
         }
+
+        /// <summary>
+        /// Splits the input (line from a csv-file), decodes the elments and returns the decoded elements
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         public static string[] DecodeLine(string input)
         {
             string[] Columns = input.Split(';');
@@ -44,17 +62,5 @@ namespace SWE_Project_PALA
 
             return output;
         }
-        //private static string Encode2(string input)
-        //{
-
-        //    return "";
-        //}
-        //private static string Decode2(string input)
-        //{
-
-        //    return "";
-        //}
-
-
     }
 }

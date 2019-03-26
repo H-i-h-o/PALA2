@@ -19,15 +19,10 @@ namespace SWE_Project_PALA
             Application.SetCompatibleTextRenderingDefault(false);
 
             PasswordForm PWForm = new PasswordForm();
-            if ((PWForm.ShowDialog() != DialogResult.OK) || !PWForm.PasswordWasOK)
-            {
-                
-            }
-            else
+            if ((PWForm.ShowDialog() == DialogResult.OK) && PWForm.PasswordWasOK)
             {
                 Application.Run(new Form1());
             }
-            
         }
     }
 }
