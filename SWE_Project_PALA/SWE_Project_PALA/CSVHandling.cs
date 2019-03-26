@@ -8,7 +8,10 @@ using System.Windows.Forms;
 
 namespace SWE_Project_PALA
 {
-    public class CSVHandling
+    /// <summary>
+    /// The static class CSVHanlding can be used to save or load a customer list
+    /// </summary>
+    static public class CSVHandling
     {
         /// <summary>
         /// Saves all items of custlist encoded to csv-file at path
@@ -17,10 +20,11 @@ namespace SWE_Project_PALA
         /// <param name="path"></param>
         public static void SaveCustomerListToCSV(CustomerList custList, string path)
         {
-            StreamWriter SWriter = new StreamWriter(path);
+            StreamWriter SWriter = null;
 
             try
             {
+                SWriter = new StreamWriter(path);
                 SWriter.Write(custList.PrintCustomerList());
             }
             catch (Exception ex)
@@ -29,7 +33,10 @@ namespace SWE_Project_PALA
             }
             finally
             {
-                SWriter.Close();
+                if(SWriter != null)
+                {
+                    SWriter.Close();
+                }
             }
         }
 
@@ -40,11 +47,12 @@ namespace SWE_Project_PALA
         /// <returns></returns>
         public static CustomerList LoadCustomerListFromCSV(string path)
         {
-            StreamReader SReader = new StreamReader(path);
+            StreamReader SReader = null;
             CustomerList CustList = new CustomerList();
 
             try
             {
+                SReader = new StreamReader(path);
                 while (SReader.Peek() != -1)
                 {
                     CustList.CustList.Add(Customer.ParseAndDecryptCustomer(SReader.ReadLine()));//change to ParseAndDecryptCustomer!!
@@ -58,7 +66,10 @@ namespace SWE_Project_PALA
             }
             finally
             {
-                SReader.Close();
+                if (SReader != null)
+                {
+                    SReader.Close();
+                }
             }
         }
     }

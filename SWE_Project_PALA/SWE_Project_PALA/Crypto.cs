@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace SWE_Project_PALA
 {
-    public class Crypto
+    /// <summary>
+    /// The static class Crypt can be used to encode or decode lines of a csv-file
+    /// </summary>
+    static public class Crypto
     {
         /// <summary>
         /// Shifts each character of the Input by Shift
