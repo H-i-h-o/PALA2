@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="SWE_Project_PALA.exe" version="1.0.0.1" publicKeyToken="fe9b5185df2899c6" language="neutral" processorArchitecture="msil" type="win32" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="SWE_Project_PALA" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="SWE_Project_PALA.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          UAC-Manifestoptionen
+          Wenn Sie die Ebene der Windows-Benutzerkontensteuerung ändern möchten, ersetzen Sie den 
+          Knoten "requestedExecutionLevel" durch eine der folgenden Angaben.
+
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel level="highestAvailable" uiAccess="false" />
+
+         Wenn Sie Datei- und Registrierungsvirtualisierung für Abwärtskompatibilität 
+         verwenden möchten, löschen Sie den Knoten "requestedExecutionLevel".
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SWE_Project_PALA.exe" size="27072">
+      <assemblyIdentity name="SWE_Project_PALA" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>8NVTBIDWQGNUuYRTbLcSSQ4bqDhvJZPeXYkpAqOwhDQ=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="SWE_Project_PALA.exe.config" size="189">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>6N7MliNbVJSIAIPrecIshMbZ7zEoKLr5SQvud4LDUOw=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=PATRICKPC\patri" issuerKeyHash="3a4fac7f020255883fd222c3aa9cbe7f127f375f" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>P8t5pOTNeStksbXbKZT8kiSzB8DDL7Z/Sr/s77XmrUI=</DigestValue></Reference></SignedInfo><SignatureValue>KHSyCwkbQNS+/HOLhz2Eoi0uVTexbSOyVfObwfzJru01JeUpQtduSqYIovRpKlItsABiRwWwND2SOICYommfQ9vfpeCtu6VeinMkawVaTHSFCwhZ7bqPHLUf2z18Fiat4aD/sEZGefDehzMkzWMZkXF0X1tLgbJ47sSBN6tN6U4=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>rzsNkzxtb2cL6TmsVBTjWXFYpIVAI4Hso6H9hM+LboIV5Fxpvy0FnzY7tbGPjy7cnsOrKlDNmwNWbgShDe/q48UL2PBViWQHyBFrmnYPTfPg2bwejMi70+1DyqChzfH9NKjUnxgI4vwUPnIWKcQRfzzASlyw024LtvuPXfkFGAU=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="42ade6b5efecbf4a7fb62fc3c007b32492fc9429dbb5b1642b79cde4a479cb3f" Description="" Url=""><as:assemblyIdentity name="SWE_Project_PALA.exe" version="1.0.0.1" publicKeyToken="fe9b5185df2899c6" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=PATRICKPC\patri</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>Ce/3JMfFxqYUFCCBumX6MJifIIgWg1Y7cA7Y8uFxrGU=</DigestValue></Reference></SignedInfo><SignatureValue>Kuix/KIpYZHxscsPBhICmYrq5SgAfuG5+ZYumPSSdhLa/Y9fEL8n4dJc/xlH+u8sE8XEd1IbPGO/WS3MOWRi2XA3SBNsHNXzAYZ0x+GvXb+sZU/BQ/n4N7zdHrG9wxSJweK4Ai7hoXetNRokP/56IvGoRqavOhTsa+CX7CPB1zU=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>rzsNkzxtb2cL6TmsVBTjWXFYpIVAI4Hso6H9hM+LboIV5Fxpvy0FnzY7tbGPjy7cnsOrKlDNmwNWbgShDe/q48UL2PBViWQHyBFrmnYPTfPg2bwejMi70+1DyqChzfH9NKjUnxgI4vwUPnIWKcQRfzzASlyw024LtvuPXfkFGAU=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB1TCCAT6gAwIBAgIQH18goQhA+IJJwkr1KUIMwDANBgkqhkiG9w0BAQsFADApMScwJQYDVQQDHh4AUABBAFQAUgBJAEMASwBQAEMAXABwAGEAdAByAGkwHhcNMTkwMzI2MTk1NzM1WhcNMjAwMzI2MDE1NzM1WjApMScwJQYDVQQDHh4AUABBAFQAUgBJAEMASwBQAEMAXABwAGEAdAByAGkwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAK87DZM8bW9nC+k5rFQU41lxWKSFQCOB7KOh/YTPi26CFeRcab8tBZ82O7Wxj48u3J7DqypQzZsDVm4EoQ3v6uPFC9jwVYlkB8gRa5p2D03z4Nm8HozIu9PtQ8qgoc3x/TSo1J8YCOL8FD5yFinEEX88wEpcsNNuC7b7j135BRgFAgMBAAEwDQYJKoZIhvcNAQELBQADgYEAphb8V1eCDfKm7U7DinPx1PR3bCDs4UtIJ6VvFoYU2XHNexO3Fd1bIxwTFv+mfr0YvWYs142rEY2L947R/eUR5xj3s1Es//Pl5jLx1KjHL9RdsumJqRt3hjTF9m4LN08/PiEtaCbfd2Uko3VhLDNfZ40hhpufwXyOiGtya/+lu+o=</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>
