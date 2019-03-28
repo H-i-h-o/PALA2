@@ -90,6 +90,7 @@
       <DependentUpon>CustomerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="CustomerList.cs" />
+    <Compile Include="CustomerSorter.cs" />
     <Compile Include="Email.cs" />
     <Compile Include="EventArgsNewCustomer.cs" />
     <Compile Include="Form1.cs">
