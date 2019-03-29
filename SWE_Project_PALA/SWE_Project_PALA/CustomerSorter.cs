@@ -8,6 +8,7 @@ namespace SWE_Project_PALA
 {
     public class CustomerSorter
     {
+        //SEE CLASS CustomerList
         private CustomerList CList;
 
         //IMPORTANT: probaplay also list.OrderBy() and list.OrderByDescending possible
@@ -20,9 +21,13 @@ namespace SWE_Project_PALA
         /// Compares the customer list by the customer NUMBER, sorts the list and returns the customer list object
         /// </summary>
         /// <returns></returns>
-        public CustomerList SortByCustomerNumber()
+        public CustomerList SortByCustomerNumber(bool descendingOrder)
         {
             CList.CustList.Sort(CompareByCustomerNumber);
+            if(descendingOrder)
+            {
+                CList.CustList.Reverse();
+            }
             return CList;
         }
         private static int CompareByCustomerNumber(Customer x, Customer y)
@@ -45,9 +50,13 @@ namespace SWE_Project_PALA
         /// Compares the customer list by the customer FIRSTNAME, sorts the list and returns the customer list object
         /// </summary>
         /// <returns></returns>
-        public CustomerList SortByFirstName()
+        public CustomerList SortByFirstName(bool descendingOrder)
         {
             CList.CustList.Sort(CompareByFirstName);
+            if(descendingOrder)
+            {
+                CList.CustList.Reverse();
+            }
             return CList;
         }
         private static int CompareByFirstName(Customer x, Customer y)
@@ -61,6 +70,7 @@ namespace SWE_Project_PALA
         public CustomerList SortByLastName()
         {
             CList.CustList.Sort(CompareByLastName);
+            CList.CustList.Reverse();
             return CList;
         }
         private static int CompareByLastName(Customer x, Customer y)

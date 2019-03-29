@@ -24,13 +24,7 @@ namespace SWE_Project_PALA
             InitializeComponent();
             CustList = LoadCustomList();
             RefreshListBox(null, null);
-
-            //Show Passwordform
-            //PasswordForm PWForm = new PasswordForm();
-            //if ((PWForm.ShowDialog() != DialogResult.OK) || !PWForm.PasswordWasOK)
-            //{
-            //    this.Close();
-            //}
+            
 
         }
 
@@ -104,6 +98,11 @@ namespace SWE_Project_PALA
             {
                 return new CustomerList();
             }
+        }
+
+        private void SFButton_Click(object sender, EventArgs e)
+        {
+            //code for connecting the sort and filter form with the functionality of the customer list
         }
     }
 }
