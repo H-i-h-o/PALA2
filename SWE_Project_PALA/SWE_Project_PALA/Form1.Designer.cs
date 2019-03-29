@@ -83,7 +83,6 @@
             // 
             // SFButton
             // 
-            this.SFButton.Enabled = false;
             this.SFButton.Location = new System.Drawing.Point(765, 453);
             this.SFButton.Margin = new System.Windows.Forms.Padding(4);
             this.SFButton.Name = "SFButton";

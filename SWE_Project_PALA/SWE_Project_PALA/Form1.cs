@@ -103,6 +103,47 @@ namespace SWE_Project_PALA
         private void SFButton_Click(object sender, EventArgs e)
         {
             //code for connecting the sort and filter form with the functionality of the customer list
+            CustomerList SubList = new CustomerList();
+
+            SortingAndFilteringForm SFForm = new SortingAndFilteringForm();
+            
+            if(SFForm.ShowDialog() == DialogResult.OK)
+            {
+                if(SFForm.SortList)
+                {
+                    switch (SFForm.SortBy)
+                    {
+                        case "Cusomer number":
+                            SubList.CustList = CustList.SortByCustomerNumber(SFForm.SortDescending);
+                            break;
+
+                        case "First name":
+                            SubList.CustList = CustList.SortByFirstName(SFForm.SortDescending);
+                            break;
+
+                        case "Last name":
+                            SubList.CustList = CustList.SortByLastName(SFForm.SortDescending);
+                            break;
+
+                        case "Email":
+                            SubList.CustList = CustList.SortByEmail(SFForm.SortDescending);
+                            break;
+
+                        case "Account balance":
+                            SubList.CustList = CustList.SortByAccountBalance(SFForm.SortDescending);
+                            break;
+
+                        case "Last Access":
+                            SubList.CustList = CustList.SortByLastAccess(SFForm.SortDescending);
+                            break;
+                    }
+                }
+                //what to do with sublist?? does it overwrite the whole customer list??
+                if(SFForm.FilterList)
+                {
+                    //code for filtering the list
+                }
+            }
         }
     }
 }

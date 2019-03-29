@@ -60,33 +60,38 @@ namespace SWE_Project_PALA
 
         private void OKButton_Click(object sender, EventArgs e)
         {
-            if(!SortCheckBox.Checked && !FilterCheckBox.Checked)
+            if(SortCheckBox.Checked || FilterCheckBox.Checked)
             {
-                if (SortComboBox.SelectedText != string.Empty)
+                if (SortCheckBox.Checked)
                 {
-                    SortList = true;
-                    SortBy = SortComboBox.SelectedText;
-                    SortAscending = AscendingCheckBox.Checked;
-                    SortDescending = DescendingCheckBox.Checked;
-                    this.DialogResult = DialogResult.OK;
-                    this.Close();
+                    if (SortComboBox.SelectedItem != null)
+                    {
+                        SortList = true;
+                        SortBy = SortComboBox.SelectedItem.ToString();
+                        SortAscending = AscendingCheckBox.Checked;
+                        SortDescending = DescendingCheckBox.Checked;
+                        this.DialogResult = DialogResult.OK;
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error: invalid input" + Environment.NewLine + "Check if you have selected a category for sorting!");
+                    }
                 }
-                else
+                if(FilterCheckBox.Checked)
                 {
-                    MessageBox.Show("Error: invalid input" + Environment.NewLine +"Check if you have selected a category for sorting!");
-                }
-
-                if (FilterComboBox.SelectedText != string.Empty && SearchStringTextBox.Text != string.Empty)
-                {
-                    FilterList = true;
-                    FilterBy = FilterComboBox.SelectedText;
-                    FilterSearchString = SearchStringTextBox.Text;
-                    this.DialogResult = DialogResult.OK;
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("Error: invalid input" + Environment.NewLine + "Check if you have selected a category for sorting!" + Environment.NewLine + "Check if you have entered something to search for");
+                    if (FilterComboBox.SelectedItem != null && SearchStringTextBox.Text != string.Empty)
+                    {
+                        FilterList = true;
+                        FilterBy = FilterComboBox.SelectedItem.ToString();
+                        FilterSearchString = SearchStringTextBox.Text;
+                        this.DialogResult = DialogResult.OK;
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error: invalid input" + Environment.NewLine + "Check if you have selected a category for filtering!" + Environment.NewLine + "Check if you have entered something to search for");
+                    }
                 }
             }
             else
