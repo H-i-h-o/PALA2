@@ -19,12 +19,16 @@ namespace SWE_Project_PALA
 
         public Form1()
         {
-            //CustList = LoadCustomList();
-            //CustList.CustomerListChangedHappened += new EventHandler(RefreshListBox);
+
             InitializeComponent();
+
             CustList = LoadCustomList();
-            RefreshListBox(null, null);
-            
+            CustList.CustomerListChangedHappened += new EventHandler(RefreshListBox);
+            //CustList.CustomerListChangedHappened = new ;
+
+            //CustList = LoadCustomList();
+            //RefreshListBox(null, null);
+
 
         }
 
