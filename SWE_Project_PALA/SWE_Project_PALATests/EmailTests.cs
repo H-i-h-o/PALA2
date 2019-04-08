@@ -7,7 +7,7 @@ namespace SWE_Project_PALATests
     [TestClass]
     public class EmailTests
     {
-        ///valid email, true expected
+        ///valid email; true expected
         [TestMethod]
         public void TestCase1()
         {
@@ -15,7 +15,7 @@ namespace SWE_Project_PALATests
             Assert.IsTrue(Email.CheckEmailInput(TestEmail));
         }
 
-        ///email contains no "@", false expected
+        ///email contains no "@"; false expected
         [TestMethod]
         public void TestCase2()
         {
@@ -23,7 +23,7 @@ namespace SWE_Project_PALATests
             Assert.IsFalse(Email.CheckEmailInput(TestEmail));
         }
 
-        ///email contains more than 1 "@", false expected
+        ///email contains more than 1 "@"; false expected
         [TestMethod]
         public void TestCase3()
         {
@@ -31,7 +31,7 @@ namespace SWE_Project_PALATests
             Assert.IsFalse(Email.CheckEmailInput(TestEmail));
         }
 
-        ///email contains no "." after the "@", false expected
+        ///email contains no "." after the "@"; false expected
         [TestMethod]
         public void TestCase4()
         {
@@ -39,7 +39,7 @@ namespace SWE_Project_PALATests
             Assert.IsFalse(Email.CheckEmailInput(TestEmail));
         }
 
-        ///email contains more than 1 "." after the "@", false expected
+        ///email contains more than 1 "." after the "@"; false expected
         [TestMethod]
         public void TestCase5()
         {
@@ -47,7 +47,7 @@ namespace SWE_Project_PALATests
             Assert.IsFalse(Email.CheckEmailInput(TestEmail));
         }
 
-        ///email has only 1 character after the final ".", false expected
+        ///email has only 1 character after the final "."; false expected
         [TestMethod]
         public void TestCase6()
         {
@@ -55,7 +55,7 @@ namespace SWE_Project_PALATests
             Assert.IsFalse(Email.CheckEmailInput(TestEmail));
         }
 
-        ///email has 2 characters after the final ".", true expected
+        ///email has 2 characters after the final "."; true expected
         [TestMethod]
         public void TestCase7()
         {
@@ -63,7 +63,7 @@ namespace SWE_Project_PALATests
             Assert.IsTrue(Email.CheckEmailInput(TestEmail));
         }
 
-        ///email has 4 characters after the final ".", true expected
+        ///email has 4 characters after the final "."; true expected
         [TestMethod]
         public void TestCase8()
         {
@@ -71,7 +71,7 @@ namespace SWE_Project_PALATests
             Assert.IsTrue(Email.CheckEmailInput(TestEmail));
         }
 
-        ///email has 5 characters after the final ".", false expected
+        ///email has 5 characters after the final "."; false expected
         [TestMethod]
         public void TestCase9()
         {
@@ -79,7 +79,7 @@ namespace SWE_Project_PALATests
             Assert.IsFalse(Email.CheckEmailInput(TestEmail));
         }
 
-        ///email has no character before the "@", false expected
+        ///email has no character before the "@"; false expected
         [TestMethod]
         public void TestCase10()
         {
@@ -87,7 +87,7 @@ namespace SWE_Project_PALATests
             Assert.IsFalse(Email.CheckEmailInput(TestEmail));
         }
 
-        ///email has 1 character before the "@", true expected
+        ///email has 1 character before the "@"; true expected
         [TestMethod]
         public void TestCase11()
         {
@@ -95,7 +95,7 @@ namespace SWE_Project_PALATests
             Assert.IsTrue(Email.CheckEmailInput(TestEmail));
         }
 
-        ///email starts with a ".", false expected
+        ///email starts with a "."; false expected
         [TestMethod]
         public void TestCase12()
         {
@@ -103,7 +103,7 @@ namespace SWE_Project_PALATests
             Assert.IsFalse(Email.CheckEmailInput(TestEmail));
         }
 
-        ///email ends with a ".", false expected
+        ///email ends with a "."; false expected
         [TestMethod]
         public void TestCase13()
         {
@@ -111,7 +111,7 @@ namespace SWE_Project_PALATests
             Assert.IsFalse(Email.CheckEmailInput(TestEmail));
         }
 
-        ///email has a "." just before the "@", false expected
+        ///email has a "." just before the "@"; false expected
         [TestMethod]
         public void TestCase14()
         {
@@ -119,7 +119,7 @@ namespace SWE_Project_PALATests
             Assert.IsFalse(Email.CheckEmailInput(TestEmail));
         }
 
-        ///email has a "." just after the "@", false expected
+        ///email has a "." just after the "@"; false expected
         [TestMethod]
         public void TestCase15()
         {
@@ -127,7 +127,7 @@ namespace SWE_Project_PALATests
             Assert.IsFalse(Email.CheckEmailInput(TestEmail));
         }
 
-        ///email contains all allowed characters, true expected
+        ///email contains all allowed characters; true expected
         [TestMethod]
         public void TestCase16()
         {
@@ -135,7 +135,7 @@ namespace SWE_Project_PALATests
             Assert.IsTrue(Email.CheckEmailInput(TestEmail));
         }
 
-        ///email null, exception expected
+        ///email null; exception expected
         [TestMethod]
         public void TestCase17()
         {

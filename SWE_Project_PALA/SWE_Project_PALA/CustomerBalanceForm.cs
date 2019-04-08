@@ -35,7 +35,8 @@ namespace SWE_Project_PALA
             Cust.ChangeToAccountBalance(Math.Abs(Convert.ToInt32(txtBoxAccountBalance.Text)));
             this.Close();
 
-            Form.RefreshListBox(this,new EventArgs());     
+            Form.RefreshListBox(this, new EventArgs());
+
         }
 
         private void btn_expense_Click(object sender, EventArgs e)

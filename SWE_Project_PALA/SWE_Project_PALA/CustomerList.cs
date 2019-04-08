@@ -12,6 +12,7 @@ namespace SWE_Project_PALA
     {
         public List<Customer> CustList = new List<Customer>();
         public event EventHandler CustomerListChangedHappened;
+        public event EventHandler WriteToLogFileAvailable;
 
         public CustomerList()
         {
@@ -31,18 +32,36 @@ namespace SWE_Project_PALA
 
         public void AddCustomer(object sender, EventArgs e)
         {
-            if (e.GetType() == typeof(EventArgsNewCustomer))
+            if (e.GetType() == typeof(EventArgsCustomerChange))
             {
-                CustList.Add(((EventArgsNewCustomer)e).NewCustomer);
+                CustList.Add(((EventArgsCustomerChange)e).Cust);
                 CustomerListChanged();
             }
         }
 
-        private void CustomerListChanged()
+        public void CustomerListChanged()
         {
             CustomerListChangedHappened?.Invoke(this, new EventArgs());
         }
-        
+
+        public void DeleteCustomer(object sender, EventArgs e)
+        {
+            if (e.GetType() == typeof(EventArgsCustomerChange))
+            {
+                if (((EventArgsCustomerChange) e).Cust.AccountBalance == 0)
+                {
+                    CustList.Remove(((EventArgsCustomerChange)e).Cust);
+                    WriteToLogFileAvailable(this, new EventArgsLogFileEntryAvailable(((EventArgsCustomerChange)e).Cust.FirstName + ((EventArgsCustomerChange)e).Cust.LastName + " deleted" + System.DateTime.Today.ToShortDateString()));
+                    CustomerListChanged();
+                }
+                else
+                {
+                    MessageBox.Show("This customer is not able to delete due to the unsolved account balance.");
+                }
+            }
+        }
+
+        #region Sorting
 
         /// <summary>
         /// Compares the customer list by the customer NUMBER, sorts the list and returns the customer list object
@@ -73,6 +92,9 @@ namespace SWE_Project_PALA
                 return 0;
             }
         }
+
+        
+
         /// <summary>
         /// Compares the customer list by the customer FIRSTNAME, sorts the list and returns the customer list object
         /// </summary>
@@ -219,5 +241,7 @@ namespace SWE_Project_PALA
         //    }
         //    return CustList;
         //}
+        #endregion
+
     }
 }

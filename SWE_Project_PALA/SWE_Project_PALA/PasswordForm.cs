@@ -12,8 +12,11 @@ namespace SWE_Project_PALA
 {
     public partial class PasswordForm : Form
     {
+        public event EventHandler WriteToLogFileAvailable;
+
         public bool PasswordWasOK { get; private set; }
         private const string Password = "password";
+        private int tryCoutner = 0;
 
         public PasswordForm()
         {
@@ -29,8 +32,16 @@ namespace SWE_Project_PALA
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
+            else if (tryCoutner == 3)
+            {
+                MessageBox.Show("The entered password was wrong the third time." + Environment.NewLine + "You reached the maximum number of inputs.");
+                WriteToLogFileAvailable(this,new EventArgsLogFileEntryAvailable("Wrong Login; " + System.DateTime.Today.ToShortDateString()));
+
+                this.Close();
+            }
             else
             {
+                tryCoutner++;
                 PasswordBox.Text = string.Empty;
                 MessageBox.Show("The entered password was wrong."+ Environment.NewLine+"Please try it again!");
             }

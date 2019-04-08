@@ -14,7 +14,7 @@ namespace SWE_Project_PALATests
         public void TestInitialize()
         {
             Input_TestCase1 = new string[] { "15","Patrick", "Gehmayr","patrick.gehmayr@gmail.com","159","24.03.2019" };
-            Input_TestCase2 = new string[] { int.MaxValue.ToString(),string.Empty,string.Empty, "a!b#c$d%e&f'g*h+i-j/k=l?m^n_o`p{q|r}s~t_u.lastname123456789@ANYMAIL.ANY",int.MinValue.ToString(),string.Empty };
+            Input_TestCase2 = new string[] { int.MaxValue.ToString(),string.Empty ,string.Empty, "a!b#c$d%e&f'g*h+i-j/k=l?m^n_o`p{q|r}s~t_u.lastname123456789@ANYMAIL.ANY",int.MinValue.ToString(),string.Empty };
             Input_TestCase3 = new string[] { null, null, null, null, null, null };
         }
 
@@ -23,8 +23,8 @@ namespace SWE_Project_PALATests
         {
             string[] DecodedStrings = SWE_Project_PALA.Crypto.DecodeLine(SWE_Project_PALA.Crypto.EncodeLine(Input_TestCase1));
             //Assert.IsTrue(Input_TestCase1 == DecodedStrings);
-            //Assert.AreEqual(Input_TestCase1, DecodedStrings);
-            //Assert.AreSame(Input_TestCase1, DecodedStrings);
+            //Assert.AreEqual(Input_TestCase1; DecodedStrings);
+            //Assert.AreSame(Input_TestCase1; DecodedStrings);
 
             bool AllStringsEqual = true;
 

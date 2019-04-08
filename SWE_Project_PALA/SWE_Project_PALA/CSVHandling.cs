@@ -41,7 +41,7 @@ namespace SWE_Project_PALA
         }
 
         /// <summary>
-        /// Loads all lines from the csv-file with path, parses a Customer for each line and returns all Customers in a CustomerList
+        /// Loads all lines from the csv-file with path; parses a Customer for each line and returns all Customers in a CustomerList
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
@@ -69,6 +69,33 @@ namespace SWE_Project_PALA
                 if (SReader != null)
                 {
                     SReader.Close();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Saves a string line to a csv file
+        /// </summary>
+        /// <param name="custList"></param>
+        /// <param name="path"></param>
+        public static void StringToCSV(string sringToWrite, string path)
+        {
+            StreamWriter SWriter = null;
+            try
+            {
+                SWriter = new StreamWriter(path);
+                SWriter.Write(sringToWrite);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("A error occurred: the log file could not be saved!" + Environment.NewLine +
+                                ex.Message);
+            }
+            finally
+            {
+                if (SWriter != null)
+                {
+                    SWriter.Close();
                 }
             }
         }

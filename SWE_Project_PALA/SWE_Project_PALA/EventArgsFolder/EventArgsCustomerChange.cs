@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace SWE_Project_PALA
 {
-    public class EventArgsNewCustomer: EventArgs
+    public class EventArgsCustomerChange: System.EventArgs
     {
-        public Customer NewCustomer;
+        public Customer Cust;
 
-        public EventArgsNewCustomer(Customer newCustomer)
+        public EventArgsCustomerChange(Customer cust)
         {
-            NewCustomer = newCustomer;
+            Cust = cust;
         }
     }
 }

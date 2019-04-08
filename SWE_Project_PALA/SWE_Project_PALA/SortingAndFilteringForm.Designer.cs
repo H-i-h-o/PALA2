@@ -1,4 +1,6 @@
-﻿namespace SWE_Project_PALA
+﻿using System.Windows.Forms;
+
+namespace SWE_Project_PALA
 {
     partial class SortingAndFilteringForm
     {
@@ -7,10 +9,12 @@
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
+        //public CheckBox SortCheckBox { get; private set; }
+
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise; false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -28,7 +32,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.SortCheckBox = new System.Windows.Forms.CheckBox();
+            this.SortCheckBox = new CheckBox();
             this.FilterCheckBox = new System.Windows.Forms.CheckBox();
             this.SortGroupBox = new System.Windows.Forms.GroupBox();
             this.SortComboBox = new System.Windows.Forms.ComboBox();

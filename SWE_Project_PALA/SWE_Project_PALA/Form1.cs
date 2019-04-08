@@ -14,8 +14,10 @@ namespace SWE_Project_PALA
     public partial class Form1 : Form
     {
         public CustomerList CustList = new CustomerList();
-        private readonly string Path = Application.StartupPath + "\\CList_crypted.csv";
-        
+        private static readonly string PathCList = Application.StartupPath + "\\CList_crypted.csv";
+        private static readonly string PathLoginLogFile = Application.StartupPath + "\\LoginLogFile.csv";
+        private static readonly string PathCustomerDeleteLogFile = Application.StartupPath + "\\CustomerDeleteLogFile.csv";
+
 
         public Form1()
         {
@@ -24,12 +26,31 @@ namespace SWE_Project_PALA
 
             CustList = LoadCustomList();
             CustList.CustomerListChangedHappened += new EventHandler(RefreshListBox);
-            //CustList.CustomerListChangedHappened = new ;
+            CustList.WriteToLogFileAvailable += new EventHandler(HandleLogFiles);
+
+            CustList.CustomerListChanged();
+
 
             //CustList = LoadCustomList();
             //RefreshListBox(null, null);
 
 
+        }
+
+        // das könnte wahrscheinlich probleme verursachen...
+        public static void HandleLogFiles(object sender, EventArgs e)
+        {
+            if (e.GetType() == typeof(EventArgsLogFileEntryAvailable))
+            {
+                if (((EventArgsLogFileEntryAvailable)sender).GetType() == typeof(PasswordForm))
+                {
+                    CSVHandling.StringToCSV(((EventArgsLogFileEntryAvailable)e).StringToWrite, PathCustomerDeleteLogFile);
+                }
+                else if (((EventArgsLogFileEntryAvailable)sender).GetType() == typeof(Program))
+                {
+                    CSVHandling.StringToCSV(((EventArgsLogFileEntryAvailable)e).StringToWrite, PathLoginLogFile);
+                }
+            }
         }
 
         private void btnAddCust_Click(object sender, EventArgs e)
@@ -47,13 +68,27 @@ namespace SWE_Project_PALA
 
         public void RefreshListBox(object sender, EventArgs e)
         {
-            listBox1.Items.Clear();
-            foreach (Customer Cust in CustList.CustList)
+            if (e.GetType() == typeof(EventArgsListBox))
             {
-                listBox1.Items.Add(Cust);
+                listBox1.Items.Clear();
+                foreach (Customer Cust in ((EventArgsListBox)e).CustList)
+                {
+                    listBox1.Items.Add(Cust);
+                }
+                btn_Edit.Enabled = false;
+                SaveCustomList();
             }
-            btnEdit.Enabled = false;
-            SaveCustomList();
+            else
+            {
+                listBox1.Items.Clear();
+                foreach (Customer Cust in (CustList.CustList))
+                {
+                    listBox1.Items.Add(Cust);
+                }
+                btn_Edit.Enabled = false;
+                SaveCustomList();
+            }
+
         }
 
         private void listBox1_DoubleClick(object sender, EventArgs e)
@@ -66,7 +101,7 @@ namespace SWE_Project_PALA
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btn_Edit_Click(object sender, EventArgs e)
         {
             if (listBox1.SelectedIndex >= 0)
             {
@@ -74,6 +109,9 @@ namespace SWE_Project_PALA
                 if (selectedItem.GetType() == typeof(Customer))
                 {
                     CustomerForm CustForm = new CustomerForm(((Customer) selectedItem), this);
+                    CustForm.NewCustomerAvailable += new EventHandler(CustList.AddCustomer);
+                    CustForm.CustomerDeleteAvailable += new EventHandler(CustList.DeleteCustomer);
+
                     CustForm.Show();
                 }
             }
@@ -83,20 +121,20 @@ namespace SWE_Project_PALA
         {
             if (listBox1.SelectedIndex >= 0)
             {
-                btnEdit.Enabled = true;
+                btn_Edit.Enabled = true;
             }
         }
 
         private void SaveCustomList()
         {
-            CSVHandling.SaveCustomerListToCSV(CustList,Path);
+            CSVHandling.SaveCustomerListToCSV(CustList, PathCList);
         }
 
         private CustomerList LoadCustomList()
         {
-            if (File.Exists(Path))
+            if (File.Exists(PathCList))
             {
-                return CSVHandling.LoadCustomerListFromCSV(Path);
+                return CSVHandling.LoadCustomerListFromCSV(PathCList);
             }
             else
             {
@@ -146,6 +184,20 @@ namespace SWE_Project_PALA
                 if(SFForm.FilterList)
                 {
                     //code for filtering the list
+                }
+
+                RefreshListBox(this, new EventArgsListBox(SubList.CustList));
+            }
+        }
+
+        private void btn_Delete_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedIndex >= 0)
+            {
+                object selectedItem = listBox1.SelectedItem;
+                if (selectedItem.GetType() == typeof(Customer))
+                {
+                    CustList.DeleteCustomer(this, new EventArgsCustomerChange((Customer)selectedItem));
                 }
             }
         }

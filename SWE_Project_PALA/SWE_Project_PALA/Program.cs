@@ -14,11 +14,12 @@ namespace SWE_Project_PALA
         [STAThread]
         static void Main()
         {
-               
+            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
             PasswordForm PWForm = new PasswordForm();
+            PWForm.WriteToLogFileAvailable += new EventHandler(Form1.HandleLogFiles);
             if ((PWForm.ShowDialog() == DialogResult.OK) && PWForm.PasswordWasOK)
             {
                 Application.Run(new Form1());

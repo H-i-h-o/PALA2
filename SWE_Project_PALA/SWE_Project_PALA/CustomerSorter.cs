@@ -18,7 +18,7 @@ namespace SWE_Project_PALA
             this.CList = CList;
         }
         /// <summary>
-        /// Compares the customer list by the customer NUMBER, sorts the list and returns the customer list object
+        /// Compares the customer list by the customer NUMBER; sorts the list and returns the customer list object
         /// </summary>
         /// <returns></returns>
         public CustomerList SortByCustomerNumber(bool descendingOrder)
@@ -47,12 +47,13 @@ namespace SWE_Project_PALA
             }
         }
         /// <summary>
-        /// Compares the customer list by the customer FIRSTNAME, sorts the list and returns the customer list object
+        /// Compares the customer list by the customer FIRSTNAME; sorts the list and returns the customer list object
         /// </summary>
         /// <returns></returns>
         public CustomerList SortByFirstName(bool descendingOrder)
         {
             CList.CustList.Sort(CompareByFirstName);
+
             if(descendingOrder)
             {
                 CList.CustList.Reverse();
@@ -64,7 +65,7 @@ namespace SWE_Project_PALA
             return string.Compare(x.FirstName, y.FirstName);
         }
         /// <summary>
-        /// Compares the customer list by the customer LASTNAME, sorts the list and returns the customer list object
+        /// Compares the customer list by the customer LASTNAME; sorts the list and returns the customer list object
         /// </summary>
         /// <returns></returns>
         public CustomerList SortByLastName()
@@ -78,7 +79,7 @@ namespace SWE_Project_PALA
             return string.Compare(x.LastName, y.LastName);
         }
         /// <summary>
-        /// Compares the customer list by the customer EMAIL adress, sorts the list and returns the customer list object
+        /// Compares the customer list by the customer EMAIL adress; sorts the list and returns the customer list object
         /// </summary>
         /// <returns></returns>
         public CustomerList SortByEmail()
@@ -91,7 +92,7 @@ namespace SWE_Project_PALA
             return string.Compare(x.EmailAddress.EmailAddress, y.EmailAddress.EmailAddress);
         }
         /// <summary>
-        /// Compares the customer list by the customer ACCOUNT BALANCE, sorts the list and returns the customer list object
+        /// Compares the customer list by the customer ACCOUNT BALANCE; sorts the list and returns the customer list object
         /// </summary>
         /// <returns></returns>
         public CustomerList SortByAccountBalance()
@@ -115,7 +116,7 @@ namespace SWE_Project_PALA
             }
         }
         /// <summary>
-        /// Compares the customer list by the customer LAST ACCESS, sorts the list and returns the customer list object
+        /// Compares the customer list by the customer LAST ACCESS; sorts the list and returns the customer list object
         /// </summary>
         /// <returns></returns>
         public CustomerList SortByLastAccess()
@@ -129,7 +130,7 @@ namespace SWE_Project_PALA
             return DateTime.Compare(x.LastAccess, y.LastAccess);
         }
         /// <summary>
-        /// Filters the customer list by the FIRST NAME and returns all customers, which contain the searchFirstName
+        /// Filters the customer list by the FIRST NAME and returns all customers; which contain the searchFirstName
         /// </summary>
         /// <param name="searchFirstName"></param>
         /// <returns></returns>
@@ -145,7 +146,7 @@ namespace SWE_Project_PALA
             return CList;
         }
         /// <summary>
-        /// Filters the customer list by the LAST NAME and returns all customers, which contain the searchLastName
+        /// Filters the customer list by the LAST NAME and returns all customers; which contain the searchLastName
         /// </summary>
         /// <param name="searchFirstName"></param>
         /// <returns></returns>
@@ -161,7 +162,7 @@ namespace SWE_Project_PALA
             return CList;
         }
         /// <summary>
-        /// Filters the customer list by the EMAIL ADRESS and returns all customers, which contain the searchEmail
+        /// Filters the customer list by the EMAIL ADRESS and returns all customers; which contain the searchEmail
         /// </summary>
         /// <param name="searchEmail"></param>
         /// <returns></returns>

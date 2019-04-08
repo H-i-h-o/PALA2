@@ -49,10 +49,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>C4031A81D725187F14E492199D20BC1599F71478</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>7AB8FBDB7D9198DCCF5E6892663772109BA398CC</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>SWE_Project_PALA_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>SWE_Project_PALA_1_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -74,6 +74,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adresse.cs" />
     <Compile Include="Crypto.cs" />
     <Compile Include="CSVHandling.cs" />
     <Compile Include="Customer.cs" />
@@ -92,7 +93,9 @@
     <Compile Include="CustomerList.cs" />
     <Compile Include="CustomerSorter.cs" />
     <Compile Include="Email.cs" />
-    <Compile Include="EventArgsNewCustomer.cs" />
+    <Compile Include="EventArgsFolder\EventArgsListBox.cs" />
+    <Compile Include="EventArgsFolder\EventArgsCustomerChange.cs" />
+    <Compile Include="EventArgsFolder\EventArgsLogFileEntryAvailable.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,6 +118,7 @@
     </Compile>
     <EmbeddedResource Include="CustomerBalanceForm.resx">
       <DependentUpon>CustomerBalanceForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomerForm.resx">
       <DependentUpon>CustomerForm.cs</DependentUpon>
@@ -124,6 +128,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PasswordForm.resx">
       <DependentUpon>PasswordForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -133,9 +138,11 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="SortingAndFilteringForm.resx">
       <DependentUpon>SortingAndFilteringForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -146,6 +153,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="SWE_Project_PALA_1_TemporaryKey.pfx" />
     <None Include="SWE_Project_PALA_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
@@ -154,7 +162,7 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 und x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">

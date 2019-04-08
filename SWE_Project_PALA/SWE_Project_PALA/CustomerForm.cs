@@ -13,6 +13,7 @@ namespace SWE_Project_PALA
     public partial class CustomerForm : Form
     {
         public event EventHandler NewCustomerAvailable;
+        public event EventHandler CustomerDeleteAvailable;
         private readonly Form1 _MainForm;
         private Customer Cust;
         private bool importedPerson;
@@ -34,6 +35,11 @@ namespace SWE_Project_PALA
             txtBoxFirstName.Text = cust.FirstName;
             txtBoxLastName.Text = cust.LastName;
 
+            txtBoxPostCode.Text = cust.CustAdresse.PostCode.ToString();
+            txtBoxCity.Text = cust.CustAdresse.City;
+            txtBoxStreet.Text = cust.CustAdresse.Street;
+            txtBoxStreetNr.Text = cust.CustAdresse.StreetNr.ToString();
+            
             importedPerson = true;
         }
 
@@ -45,6 +51,7 @@ namespace SWE_Project_PALA
                 {
                     Cust.ChangeEmail(txtBoxEmail.Text);
                     Cust.ChangeName(txtBoxFirstName.Text,txtBoxLastName.Text);
+                    Cust.ChangeAdresse(new Adresse(txtBoxStreet.Text, (txtBoxEmail.Text), int.Parse(txtBoxPostCode.Text), txtBoxCity.Text));
                     this.Close();
                 }
             }
@@ -52,9 +59,8 @@ namespace SWE_Project_PALA
             {
                 if (Email.CheckEmailInput(txtBoxEmail.Text))
                 {
-                    Cust = new Customer(txtBoxFirstName.Text, txtBoxLastName.Text, txtBoxEmail.Text,
-                        _MainForm.GetNewCustomerNumber());
-                    NewCustomerAvailable?.Invoke(this, new EventArgsNewCustomer(Cust));
+                    Cust = new Customer(_MainForm.GetNewCustomerNumber(),txtBoxFirstName.Text, txtBoxLastName.Text, new Email(txtBoxEmail.Text), new Adresse(txtBoxStreet.Text, (txtBoxStreetNr.Text), int.Parse(txtBoxPostCode.Text), txtBoxCity.Text));
+                    NewCustomerAvailable?.Invoke(this, new EventArgsCustomerChange(Cust));
                     this.Close();
                 }
             }
@@ -77,9 +83,41 @@ namespace SWE_Project_PALA
 
         }
 
+        private void txtBox_TextChangedString(object sender, EventArgs e)
+        {
+            if (sender.GetType() == typeof(TextBox))
+            {
+                ((TextBox)sender).BackColor = System.Drawing.Color.Green;
+            }
+        }
+
+        private void txtBox_TextChangedInt(object sender, EventArgs e)
+        {
+            if (sender.GetType() == typeof(TextBox))
+            {
+                int nr;
+                if (int.TryParse(((TextBox)sender).Text, out nr))
+                {
+                    ((TextBox)sender).BackColor = System.Drawing.Color.Green;
+                }
+                else
+                {
+                    ((TextBox)sender).BackColor = System.Drawing.Color.Red;
+
+                }
+            }
+        }
+
+
         private void txtBoxEmail_TextChanged(object sender, EventArgs e)
         {
             txtBoxEmail.BackColor = Email.CheckEmailInput(txtBoxEmail.Text) ? System.Drawing.Color.Green : System.Drawing.Color.Red;
+        }
+
+        private void btn_Delete_Click(object sender, EventArgs e)
+        {
+            CustomerDeleteAvailable?.Invoke(this, new EventArgsCustomerChange(Cust));
+
         }
     }
 }

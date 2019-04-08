@@ -3,6 +3,7 @@ using SWE_Project_PALA;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,10 +21,10 @@ namespace SWE_Project_PALA.Tests
             StringBuilder CustListString = new StringBuilder();
             for (int i = 0; i < 10; i++)
             {
-                Cust = new Customer("Vorname" + i.ToString(), "Nachname" + i.ToString(), "Email" + 1.ToString() + "@com.at",i);
-                CustList.AddCustomer(this, new EventArgsNewCustomer(Cust));
+                Cust = new Customer(i,"Vorname" + i.ToString(), "Nachname" + i.ToString(), new Email("Email" + i.ToString() + "@com.at"), new Adresse( "Street" + i, i.ToString(), i + i, "City" + i));
+                CustList.AddCustomer(this, new EventArgsCustomerChange(Cust));
 
-                CustListString.AppendLine("Vorname" + i.ToString() + "; " + "Nachname" + i.ToString() + "; " + "Email" + 1 + "@com.at");
+                CustListString.AppendLine(i + "; " + "Vorname" + i.ToString() + "; " + "Nachname" + i.ToString() + "; " + "Email" + i.ToString() + "@com.at" + "; " + "Street" + i + "; " + i + "; " + i + i + "; " + "City" + i);
             }
         }
 
