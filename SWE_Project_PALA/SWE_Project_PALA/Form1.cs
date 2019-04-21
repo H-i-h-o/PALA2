@@ -30,11 +30,31 @@ namespace SWE_Project_PALA
 
             CustList.CustomerListChanged();
 
+            //DataGridViewCustomer.Rows[number].Cells[0].Value = Cust.CustomerNumber;
+            //DataGridViewCustomer.Rows[number].Cells[1].Value = Cust.FirstName;
+            //DataGridViewCustomer.Rows[number].Cells[2].Value = Cust.LastName;
+            //DataGridViewCustomer.Rows[number].Cells[3].Value = Cust.EmailAddress;
+            //DataGridViewCustomer.Rows[number].Cells[4].Value = Cust.AccountBalance;
+            //DataGridViewCustomer.Rows[number].Cells[5].Value = Cust.LastAccess;
+            //DataGridViewCustomer.Rows[number].Cells[6].Value = Cust.CustAdresse.PostCode;
+            //DataGridViewCustomer.Rows[number].Cells[7].Value = Cust.CustAdresse.City;
+            //DataGridViewCustomer.Rows[number].Cells[8].Value = Cust.CustAdresse.Street;
+            //DataGridViewCustomer.Rows[number].Cells[9].Value = Cust.CustAdresse.StreetNr;
 
             //CustList = LoadCustomList();
             //RefreshListBox(null, null);
 
-
+            DataGridViewCustomer.Columns.Add("0", "Customer Number");
+            DataGridViewCustomer.Columns.Add("1", "First Name");
+            DataGridViewCustomer.Columns.Add("2", "Last Name");
+            DataGridViewCustomer.Columns.Add("3", "E-Mail Address");
+            DataGridViewCustomer.Columns.Add("4", "Open Balance [€]");
+            DataGridViewCustomer.Columns.Add("5", "Last Change");
+            DataGridViewCustomer.Columns.Add("6", "Post Code");
+            DataGridViewCustomer.Columns.Add("7", "City");
+            DataGridViewCustomer.Columns.Add("8", "Street");
+            DataGridViewCustomer.Columns.Add("9", "Nr.");
+            DataGridViewCustomer.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         // das könnte wahrscheinlich probleme verursachen...
@@ -75,6 +95,19 @@ namespace SWE_Project_PALA
                 foreach (Customer Cust in ((EventArgsListBox)e).CustList)
                 {
                     listBox1.Items.Add(Cust);
+
+                    DataGridViewCustomer.Rows.Clear();
+                    int number = DataGridViewCustomer.Rows.Add();
+                    DataGridViewCustomer.Rows[number].Cells[0].Value = Cust.CustomerNumber;
+                    DataGridViewCustomer.Rows[number].Cells[1].Value = Cust.FirstName;
+                    DataGridViewCustomer.Rows[number].Cells[2].Value = Cust.LastName;
+                    DataGridViewCustomer.Rows[number].Cells[3].Value = Cust.EmailAddress;
+                    DataGridViewCustomer.Rows[number].Cells[4].Value = Cust.AccountBalance;
+                    DataGridViewCustomer.Rows[number].Cells[5].Value = Cust.LastAccess;
+                    DataGridViewCustomer.Rows[number].Cells[6].Value = Cust.CustAdresse.PostCode;
+                    DataGridViewCustomer.Rows[number].Cells[7].Value = Cust.CustAdresse.City;
+                    DataGridViewCustomer.Rows[number].Cells[8].Value = Cust.CustAdresse.Street;
+                    DataGridViewCustomer.Rows[number].Cells[9].Value = Cust.CustAdresse.StreetNr;
                 }
                 btn_Edit.Enabled = false;
                 SaveCustomList();
@@ -85,6 +118,19 @@ namespace SWE_Project_PALA
                 foreach (Customer Cust in (CustList.CustList))
                 {
                     listBox1.Items.Add(Cust);
+
+                    DataGridViewCustomer.Rows.Clear();
+                    int number = DataGridViewCustomer.Rows.Add();
+                    DataGridViewCustomer.Rows[number].Cells[0].Value = Cust.CustomerNumber;
+                    DataGridViewCustomer.Rows[number].Cells[1].Value = Cust.FirstName;
+                    DataGridViewCustomer.Rows[number].Cells[2].Value = Cust.LastName;
+                    DataGridViewCustomer.Rows[number].Cells[3].Value = Cust.EmailAddress;
+                    DataGridViewCustomer.Rows[number].Cells[4].Value = Cust.AccountBalance;
+                    DataGridViewCustomer.Rows[number].Cells[5].Value = Cust.LastAccess;
+                    DataGridViewCustomer.Rows[number].Cells[6].Value = Cust.CustAdresse.PostCode;
+                    DataGridViewCustomer.Rows[number].Cells[7].Value = Cust.CustAdresse.City;
+                    DataGridViewCustomer.Rows[number].Cells[8].Value = Cust.CustAdresse.Street;
+                    DataGridViewCustomer.Rows[number].Cells[9].Value = Cust.CustAdresse.StreetNr;
                 }
                 btn_Edit.Enabled = false;
                 SaveCustomList();
