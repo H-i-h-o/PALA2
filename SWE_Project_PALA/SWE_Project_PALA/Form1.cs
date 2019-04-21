@@ -42,11 +42,12 @@ namespace SWE_Project_PALA
         {
             if (e.GetType() == typeof(EventArgsLogFileEntryAvailable))
             {
-                if (((EventArgsLogFileEntryAvailable)sender).GetType() == typeof(PasswordForm))
+                //if (((EventArgsLogFileEntryAvailable)sender).GetType() == typeof(PasswordForm))
+                if (sender.GetType() == typeof(PasswordForm))
                 {
                     CSVHandling.StringToCSV(((EventArgsLogFileEntryAvailable)e).StringToWrite, PathCustomerDeleteLogFile);
                 }
-                else if (((EventArgsLogFileEntryAvailable)sender).GetType() == typeof(Program))
+                else if (sender.GetType() == typeof(Program))
                 {
                     CSVHandling.StringToCSV(((EventArgsLogFileEntryAvailable)e).StringToWrite, PathLoginLogFile);
                 }

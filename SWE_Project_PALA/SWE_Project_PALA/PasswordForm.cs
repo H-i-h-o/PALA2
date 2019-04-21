@@ -26,7 +26,9 @@ namespace SWE_Project_PALA
 
         private void ButtonOK_Click(object sender, EventArgs e)
         {
-            if(PasswordBox.Text == Password)
+            tryCoutner++;
+
+            if (PasswordBox.Text == Password)
             {
                 PasswordWasOK = true;
                 this.DialogResult = DialogResult.OK;
@@ -41,7 +43,6 @@ namespace SWE_Project_PALA
             }
             else
             {
-                tryCoutner++;
                 PasswordBox.Text = string.Empty;
                 MessageBox.Show("The entered password was wrong."+ Environment.NewLine+"Please try it again!");
             }
