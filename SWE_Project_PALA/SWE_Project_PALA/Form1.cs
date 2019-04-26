@@ -28,6 +28,24 @@ namespace SWE_Project_PALA
             CustList.CustomerListChangedHappened += new EventHandler(RefreshListBox);
             CustList.WriteToLogFileAvailable += new EventHandler(HandleLogFiles);
 
+            DataGridViewCustomer.MultiSelect = false;
+            DataGridViewCustomer.Columns.Add("0", "Customer Number");
+            DataGridViewCustomer.Columns.Add("1", "First Name");
+            DataGridViewCustomer.Columns.Add("2", "Last Name");
+            DataGridViewCustomer.Columns.Add("3", "E-Mail Address");
+            DataGridViewCustomer.Columns.Add("4", "Open Balance [€]");
+            DataGridViewCustomer.Columns.Add("5", "Last Change");
+            DataGridViewCustomer.Columns.Add("6", "Post Code");
+            DataGridViewCustomer.Columns.Add("7", "City");
+            DataGridViewCustomer.Columns.Add("8", "Street");
+            DataGridViewCustomer.Columns.Add("9", "Nr.");
+            DataGridViewCustomer.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            DataGridViewCustomer.ColumnHeadersDefaultCellStyle.BackColor = Color.Navy;
+            DataGridViewCustomer.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            DataGridViewCustomer.ColumnHeadersDefaultCellStyle.Font =
+                new Font(DataGridViewCustomer.Font, FontStyle.Bold);
+
             CustList.CustomerListChanged();
 
             //DataGridViewCustomer.Rows[number].Cells[0].Value = Cust.CustomerNumber;
@@ -44,17 +62,6 @@ namespace SWE_Project_PALA
             //CustList = LoadCustomList();
             //RefreshListBox(null, null);
 
-            DataGridViewCustomer.Columns.Add("0", "Customer Number");
-            DataGridViewCustomer.Columns.Add("1", "First Name");
-            DataGridViewCustomer.Columns.Add("2", "Last Name");
-            DataGridViewCustomer.Columns.Add("3", "E-Mail Address");
-            DataGridViewCustomer.Columns.Add("4", "Open Balance [€]");
-            DataGridViewCustomer.Columns.Add("5", "Last Change");
-            DataGridViewCustomer.Columns.Add("6", "Post Code");
-            DataGridViewCustomer.Columns.Add("7", "City");
-            DataGridViewCustomer.Columns.Add("8", "Street");
-            DataGridViewCustomer.Columns.Add("9", "Nr.");
-            DataGridViewCustomer.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         // das könnte wahrscheinlich probleme verursachen...
@@ -92,16 +99,18 @@ namespace SWE_Project_PALA
             if (e.GetType() == typeof(EventArgsListBox))
             {
                 listBox1.Items.Clear();
+                DataGridViewCustomer.Rows.Clear();
+
                 foreach (Customer Cust in ((EventArgsListBox)e).CustList)
                 {
                     listBox1.Items.Add(Cust);
 
-                    DataGridViewCustomer.Rows.Clear();
+                    //DataGridViewCustomer.Rows.Add(Cust.ToString());
                     int number = DataGridViewCustomer.Rows.Add();
                     DataGridViewCustomer.Rows[number].Cells[0].Value = Cust.CustomerNumber;
                     DataGridViewCustomer.Rows[number].Cells[1].Value = Cust.FirstName;
                     DataGridViewCustomer.Rows[number].Cells[2].Value = Cust.LastName;
-                    DataGridViewCustomer.Rows[number].Cells[3].Value = Cust.EmailAddress;
+                    DataGridViewCustomer.Rows[number].Cells[3].Value = Cust.EmailAddress.EmailAddress;
                     DataGridViewCustomer.Rows[number].Cells[4].Value = Cust.AccountBalance;
                     DataGridViewCustomer.Rows[number].Cells[5].Value = Cust.LastAccess;
                     DataGridViewCustomer.Rows[number].Cells[6].Value = Cust.CustAdresse.PostCode;
@@ -115,16 +124,18 @@ namespace SWE_Project_PALA
             else
             {
                 listBox1.Items.Clear();
+                DataGridViewCustomer.Rows.Clear();
+
                 foreach (Customer Cust in (CustList.CustList))
                 {
                     listBox1.Items.Add(Cust);
 
-                    DataGridViewCustomer.Rows.Clear();
+                    //DataGridViewCustomer.Rows.Add(Cust.ToString());
                     int number = DataGridViewCustomer.Rows.Add();
                     DataGridViewCustomer.Rows[number].Cells[0].Value = Cust.CustomerNumber;
                     DataGridViewCustomer.Rows[number].Cells[1].Value = Cust.FirstName;
                     DataGridViewCustomer.Rows[number].Cells[2].Value = Cust.LastName;
-                    DataGridViewCustomer.Rows[number].Cells[3].Value = Cust.EmailAddress;
+                    DataGridViewCustomer.Rows[number].Cells[3].Value = Cust.EmailAddress.EmailAddress;
                     DataGridViewCustomer.Rows[number].Cells[4].Value = Cust.AccountBalance;
                     DataGridViewCustomer.Rows[number].Cells[5].Value = Cust.LastAccess;
                     DataGridViewCustomer.Rows[number].Cells[6].Value = Cust.CustAdresse.PostCode;
@@ -162,6 +173,19 @@ namespace SWE_Project_PALA
                     CustForm.Show();
                 }
             }
+            if (DataGridViewCustomer.CurrentCell.RowIndex >= 0)
+            {
+                object selectedItem = DataGridViewCustomer.SelectedRows;
+                if (selectedItem.GetType() == typeof(Customer))
+                {
+                    CustomerForm CustForm = new CustomerForm(((Customer)selectedItem), this);
+                    CustForm.NewCustomerAvailable += new EventHandler(CustList.AddCustomer);
+                    CustForm.CustomerDeleteAvailable += new EventHandler(CustList.DeleteCustomer);
+
+                    CustForm.Show();
+                }
+            }
+
         }
 
         private void listBox1_Click(object sender, EventArgs e)
@@ -169,6 +193,14 @@ namespace SWE_Project_PALA
             if (listBox1.SelectedIndex >= 0)
             {
                 btn_Edit.Enabled = true;
+            }
+            else if (DataGridViewCustomer.CurrentCell.RowIndex >= 0)
+            {
+                btn_Edit.Enabled = true;
+            }
+            else
+            {
+                btn_Edit.Enabled = false;
             }
         }
 

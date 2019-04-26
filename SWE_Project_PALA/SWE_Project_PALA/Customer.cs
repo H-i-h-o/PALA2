@@ -40,7 +40,7 @@ namespace SWE_Project_PALA
             CustomerNumber = customerNumber;
             CustAdresse = custAdresse;
         }
-        public Customer(int customerNumber, string firstName, string lastName, string emailAddress, int accountBalance, Adresse custAdresse, DateTime lastAccess)
+        public Customer(int customerNumber, string firstName, string lastName, string emailAddress, Adresse custAdresse, DateTime lastAccess, int accountBalance)
         {
             FirstName = firstName;
             LastName = lastName;
@@ -56,14 +56,14 @@ namespace SWE_Project_PALA
         public static Customer parseCustomer(string text)
         {
             string[] parts = text.Split(';');
-            return new Customer(int.Parse(parts[0]), parts[1], parts[2], parts[3], int.Parse(parts[4]), new Adresse(parts[5], (parts[6]), int.Parse(parts[7]), parts[8]), DateTime.Parse(parts[9]));
+            return new Customer(int.Parse(parts[0]), parts[1], parts[2], parts[3], new Adresse(parts[4]), DateTime.Parse(parts[5]), int.Parse(parts[6]));
         }   
 
         public static Customer ParseAndDecryptCustomer(string text)
         {
             string[] parts = Crypto.DecodeLine(text);
 
-            return new Customer(int.Parse(parts[0]), parts[1], parts[2], parts[3], int.Parse(parts[4]), new Adresse(parts[5], (parts[6]), int.Parse(parts[7]), parts[8]), DateTime.Parse(parts[9]));
+            return new Customer(int.Parse(parts[0]), parts[1], parts[2], parts[3], new Adresse(parts[4]), DateTime.Parse(parts[5]),int.Parse(parts[6]));
         }
 
         public void ChangeToAccountBalance(int expense)
@@ -77,14 +77,14 @@ namespace SWE_Project_PALA
             LastAccess = DateTime.Today;
         }
 
-        public string PrintCustomer()
+        public string PrintCustomerForView()
         {
-            return CustomerNumber + ";" + FirstName + ";" + LastName + ";" + EmailAddress.Print() + ";" + AccountBalance + ";" + LastAccess.ToShortDateString();
+            return CustomerNumber + "," + FirstName + "," + LastName + "," + EmailAddress.Print() + "," + AccountBalance + "," + LastAccess.ToShortDateString() + "," + CustAdresse.ToCSVString();
         }
 
         public string PrintCustomerCrypt()
         {
-            return Crypto.EncodeLine(new string[] { CustomerNumber.ToString(), FirstName, LastName, EmailAddress.Print(), AccountBalance.ToString(), LastAccess.ToShortDateString() });
+            return Crypto.EncodeLine(new string[] { CustomerNumber.ToString(), FirstName, LastName, EmailAddress.Print(), CustAdresse.ToCSVString(), LastAccess.ToShortDateString(), AccountBalance.ToString() });
         }
 
         public void ChangeName(string firstName, string lastName)
@@ -105,7 +105,7 @@ namespace SWE_Project_PALA
 
         public override string ToString()
         {
-            return CustomerNumber + "   " + FirstName + "   " + LastName + "    " + EmailAddress.Print() + "    " + AccountBalance + "  " + CustAdresse.ToString() + "   " + LastAccess.ToShortDateString();
+            return CustomerNumber + ", " + FirstName + ", " + LastName + ", " + EmailAddress.Print() + ", " + CustAdresse.ToString() + ", " + LastAccess.ToShortDateString() + ", " + AccountBalance;
         }
     }
 }

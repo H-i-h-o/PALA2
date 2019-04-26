@@ -21,9 +21,27 @@ namespace SWE_Project_PALA
             City = city;
         }
 
-        public override string ToString()
+        public Adresse(string streetAndStreetNrAndpostCodeAndCity)
+        {
+            string[] adress = streetAndStreetNrAndpostCodeAndCity.Split(';');
+            if (adress.Length == 4)
+            {
+                Street = adress[0];
+                StreetNr = adress[1];
+                PostCode = Convert.ToInt32(adress[2]);
+                City = adress[3];
+            }
+        }
+
+        public string ToCSVString()
         {
             return Street + "; " + StreetNr + "; " + PostCode + "; " + City;
+        }
+
+        public override string ToString()
+        {
+            return Street + ", " + StreetNr + ", " + PostCode + ", " + City;
+
         }
     }
 }

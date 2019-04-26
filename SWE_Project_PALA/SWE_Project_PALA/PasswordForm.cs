@@ -15,7 +15,7 @@ namespace SWE_Project_PALA
         public event EventHandler WriteToLogFileAvailable;
 
         public bool PasswordWasOK { get; private set; }
-        private const string Password = "password";
+        private const string Password = "a";
         private int tryCoutner = 0;
 
         public PasswordForm()

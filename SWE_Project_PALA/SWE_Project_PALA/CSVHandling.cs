@@ -24,7 +24,7 @@ namespace SWE_Project_PALA
 
             try
             {
-                SWriter = new StreamWriter(path);
+                SWriter = new StreamWriter(path) {AutoFlush = true};
                 SWriter.Write(custList.PrintCustomerList());
             }
             catch (Exception ex)
@@ -83,7 +83,8 @@ namespace SWE_Project_PALA
             StreamWriter SWriter = null;
             try
             {
-                SWriter = new StreamWriter(path);
+                SWriter = new StreamWriter(path) {AutoFlush = true};
+
                 SWriter.Write(sringToWrite);
             }
             catch (Exception ex)
