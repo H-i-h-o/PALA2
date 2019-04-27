@@ -41,7 +41,7 @@ namespace SWE_Project_PALA
 
             foreach (string str in input)
             {
-                EncodedLine += ShiftString(str, 121) + ";";
+                EncodedLine += ShiftString(str, 1) + ";";
             }
             
             return EncodedLine;
@@ -60,7 +60,7 @@ namespace SWE_Project_PALA
 
             for (int i = 0; i < Columns.Length-1; i++)
             {
-                output[i] = ShiftString(Columns[i], -121);
+                output[i] = ShiftString(Columns[i], -1);
             }
 
             return output;
