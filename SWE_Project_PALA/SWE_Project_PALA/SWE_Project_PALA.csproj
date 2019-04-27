@@ -78,7 +78,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Adresse.cs" />
+    <Compile Include="Address.cs" />
     <Compile Include="Crypto.cs" />
     <Compile Include="CSVHandling.cs" />
     <Compile Include="Customer.cs" />

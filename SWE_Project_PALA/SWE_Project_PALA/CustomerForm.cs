@@ -51,7 +51,7 @@ namespace SWE_Project_PALA
                 {
                     Cust.ChangeEmail(txtBoxEmail.Text);
                     Cust.ChangeName(txtBoxFirstName.Text,txtBoxLastName.Text);
-                    Cust.ChangeAdresse(new Adresse(txtBoxStreet.Text, (txtBoxEmail.Text), int.Parse(txtBoxPostCode.Text), txtBoxCity.Text));
+                    Cust.ChangeAdresse(new Address(txtBoxStreet.Text, (txtBoxEmail.Text), int.Parse(txtBoxPostCode.Text), txtBoxCity.Text));
                     this.Close();
                 }
             }
@@ -59,7 +59,7 @@ namespace SWE_Project_PALA
             {
                 if (Email.CheckEmailInput(txtBoxEmail.Text))
                 {
-                    Cust = new Customer(_MainForm.GetNewCustomerNumber(),txtBoxFirstName.Text, txtBoxLastName.Text, new Email(txtBoxEmail.Text), new Adresse(txtBoxStreet.Text, (txtBoxStreetNr.Text), int.Parse(txtBoxPostCode.Text), txtBoxCity.Text));
+                    Cust = new Customer(_MainForm.GetNewCustomerNumber(),txtBoxFirstName.Text, txtBoxLastName.Text, new Email(txtBoxEmail.Text), new Address(txtBoxStreet.Text, (txtBoxStreetNr.Text), int.Parse(txtBoxPostCode.Text), txtBoxCity.Text));
                     NewCustomerAvailable?.Invoke(this, new EventArgsCustomerChange(Cust));
                     this.Close();
                 }
@@ -105,6 +105,22 @@ namespace SWE_Project_PALA
                     ((TextBox)sender).BackColor = System.Drawing.Color.Red;
 
                 }
+            }
+            if (txtBoxPostCode.Text.Length > 0 &&
+                txtBoxCity.Text.Length > 0 &&
+                Email.CheckEmailInput(txtBoxEmail.Text) &&
+                txtBoxFirstName.Text.Length > 0 &&
+                txtBoxLastName.Text.Length > 0 &&
+                txtBoxStreet.Text.Length > 0 &&
+                txtBoxStreetNr.Text.Length > 0)
+            {
+                btn_Delete.Enabled = true;
+                btn_Cancle.Enabled = true;
+            }
+            else
+            {
+                btn_Delete.Enabled = false;
+                btn_Cancle.Enabled = false;
             }
         }
 

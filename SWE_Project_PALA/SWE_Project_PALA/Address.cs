@@ -6,22 +6,22 @@ using System.Threading.Tasks;
 
 namespace SWE_Project_PALA
 {
-    public class Adresse
+    public class Address
     {
         public string Street { private set; get; }
         public string StreetNr { private set; get; }
         public string City { private set; get; }
         public int PostCode { private set; get; }
 
-        public Adresse(string street, string streetNr, int postCode, string city)
+        public Address(string street, string streetNr, int postCode, string city)
         {
-            Street = street;
+            Street = street.Trim();
             StreetNr = streetNr;
             PostCode = postCode;
-            City = city;
+            City = city.Trim();
         }
 
-        public Adresse(string streetAndStreetNrAndpostCodeAndCity)
+        public Address(string streetAndStreetNrAndpostCodeAndCity)
         {
             string[] adress = streetAndStreetNrAndpostCodeAndCity.Split(';');
             if (adress.Length == 4)
@@ -40,7 +40,7 @@ namespace SWE_Project_PALA
 
         public override string ToString()
         {
-            return Street + ", " + StreetNr + ", " + PostCode + ", " + City;
+            return Street + " " + StreetNr + ", " + PostCode + ", " + City;
 
         }
     }

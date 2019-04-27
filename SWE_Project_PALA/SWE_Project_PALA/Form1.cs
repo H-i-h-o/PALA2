@@ -59,11 +59,11 @@ namespace SWE_Project_PALA
             {
                 if (sender.GetType() == typeof(PasswordForm))
                 {
-                    CSVHandling.StringToCSV(((EventArgsLogFileEntryAvailable)e).StringToWrite, PathCustomerDeleteLogFile);
-                }
-                else if (sender.GetType() == typeof(Program))
-                {
                     CSVHandling.StringToCSV(((EventArgsLogFileEntryAvailable)e).StringToWrite, PathLoginLogFile);
+                }
+                else if (sender.GetType() == typeof(CustomerList))
+                {
+                    CSVHandling.StringToCSV(((EventArgsLogFileEntryAvailable)e).StringToWrite, PathCustomerDeleteLogFile);
                 }
             }
         }
@@ -266,18 +266,37 @@ namespace SWE_Project_PALA
             {
                 btn_Edit.Enabled = true;
                 btn_Delete.Enabled = true;
+
+                tableLayoutPanelDetails.Visible = true;
+
+                var selectedItem = CustList.CustList.Find(x => x.CustomerNumber.Equals(Convert.ToInt32(listViewCustomer.SelectedItems[0].SubItems[0].Text)));
+
+                if (selectedItem.GetType() == typeof(Customer))
+                {
+                    fillCustomerDetails(selectedItem);
+                }
             }
             else
             {
                 btn_Edit.Enabled = false;
                 btn_Delete.Enabled = false;
 
+                tableLayoutPanelDetails.Visible = false;
             }
         }
 
         private void ShowAllBtn_Click(object sender, EventArgs e)
         {
             RefreshListBox(this, new EventArgsListBox(this.CustList.CustList));
+        }
+
+        private void fillCustomerDetails(Customer Cust)
+        {
+            lab_CustNr.Text = Cust.CustomerNumber.ToString();
+            lab_name.Text = Cust.FirstName + " " + Cust.LastName;
+            lab_balance.Text = Cust.AccountBalance.ToString();
+            lab_email.Text = Cust.EmailAddress.EmailAddress;
+            lab_Adress.Text = Cust.CustAdresse.ToString();
         }
     }
 }

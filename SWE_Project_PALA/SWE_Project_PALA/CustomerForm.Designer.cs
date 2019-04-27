@@ -43,8 +43,8 @@
             this.txtBoxCity = new System.Windows.Forms.TextBox();
             this.btn_Save = new System.Windows.Forms.Button();
             this.btn_Cancle = new System.Windows.Forms.Button();
-            this.txtBoxStreetNr = new System.Windows.Forms.TextBox();
             this.btn_Delete = new System.Windows.Forms.Button();
+            this.txtBoxStreetNr = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,7 +72,7 @@
             this.tableLayoutPanel1.Controls.Add(this.btn_Delete, 1, 3);
             this.tableLayoutPanel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tableLayoutPanel1.Location = new System.Drawing.Point(5, 9);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(1);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -90,9 +90,9 @@
             this.label1.Location = new System.Drawing.Point(1, 0);
             this.label1.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 17);
+            this.label1.Size = new System.Drawing.Size(70, 17);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Vorname:";
+            this.label1.Text = "Firstname";
             // 
             // label2
             // 
@@ -101,9 +101,9 @@
             this.label2.Location = new System.Drawing.Point(1, 75);
             this.label2.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(80, 17);
+            this.label2.Size = new System.Drawing.Size(74, 17);
             this.label2.TabIndex = 0;
-            this.label2.Text = "Nachname:";
+            this.label2.Text = "Lastname:";
             // 
             // label3
             // 
@@ -120,7 +120,7 @@
             // 
             this.txtBoxFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxFirstName.Location = new System.Drawing.Point(139, 1);
-            this.txtBoxFirstName.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.txtBoxFirstName.Margin = new System.Windows.Forms.Padding(1);
             this.txtBoxFirstName.Name = "txtBoxFirstName";
             this.txtBoxFirstName.Size = new System.Drawing.Size(121, 27);
             this.txtBoxFirstName.TabIndex = 1;
@@ -130,7 +130,7 @@
             // 
             this.txtBoxLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxLastName.Location = new System.Drawing.Point(139, 76);
-            this.txtBoxLastName.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.txtBoxLastName.Margin = new System.Windows.Forms.Padding(1);
             this.txtBoxLastName.Name = "txtBoxLastName";
             this.txtBoxLastName.Size = new System.Drawing.Size(121, 27);
             this.txtBoxLastName.TabIndex = 1;
@@ -140,7 +140,7 @@
             // 
             this.txtBoxEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxEmail.Location = new System.Drawing.Point(139, 151);
-            this.txtBoxEmail.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.txtBoxEmail.Margin = new System.Windows.Forms.Padding(1);
             this.txtBoxEmail.Name = "txtBoxEmail";
             this.txtBoxEmail.Size = new System.Drawing.Size(121, 27);
             this.txtBoxEmail.TabIndex = 1;
@@ -153,9 +153,9 @@
             this.label4.Location = new System.Drawing.Point(277, 0);
             this.label4.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(106, 17);
+            this.label4.Size = new System.Drawing.Size(97, 17);
             this.label4.TabIndex = 0;
-            this.label4.Text = "Straße und Nr.:";
+            this.label4.Text = "Street and Nr.";
             // 
             // label5
             // 
@@ -175,15 +175,15 @@
             this.label6.Location = new System.Drawing.Point(277, 150);
             this.label6.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(32, 17);
+            this.label6.Size = new System.Drawing.Size(35, 17);
             this.label6.TabIndex = 0;
-            this.label6.Text = "Ort:";
+            this.label6.Text = "City:";
             // 
             // txtBoxStreet
             // 
             this.txtBoxStreet.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxStreet.Location = new System.Drawing.Point(415, 1);
-            this.txtBoxStreet.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.txtBoxStreet.Margin = new System.Windows.Forms.Padding(1);
             this.txtBoxStreet.Name = "txtBoxStreet";
             this.txtBoxStreet.Size = new System.Drawing.Size(88, 27);
             this.txtBoxStreet.TabIndex = 1;
@@ -193,7 +193,7 @@
             // 
             this.txtBoxPostCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxPostCode.Location = new System.Drawing.Point(415, 76);
-            this.txtBoxPostCode.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.txtBoxPostCode.Margin = new System.Windows.Forms.Padding(1);
             this.txtBoxPostCode.Name = "txtBoxPostCode";
             this.txtBoxPostCode.Size = new System.Drawing.Size(121, 27);
             this.txtBoxPostCode.TabIndex = 1;
@@ -203,7 +203,7 @@
             // 
             this.txtBoxCity.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxCity.Location = new System.Drawing.Point(415, 151);
-            this.txtBoxCity.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.txtBoxCity.Margin = new System.Windows.Forms.Padding(1);
             this.txtBoxCity.Name = "txtBoxCity";
             this.txtBoxCity.Size = new System.Drawing.Size(121, 27);
             this.txtBoxCity.TabIndex = 1;
@@ -213,7 +213,7 @@
             // 
             this.btn_Save.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Save.Location = new System.Drawing.Point(277, 226);
-            this.btn_Save.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.btn_Save.Margin = new System.Windows.Forms.Padding(1);
             this.btn_Save.Name = "btn_Save";
             this.btn_Save.Size = new System.Drawing.Size(62, 30);
             this.btn_Save.TabIndex = 2;
@@ -225,23 +225,13 @@
             // 
             this.btn_Cancle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Cancle.Location = new System.Drawing.Point(415, 226);
-            this.btn_Cancle.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.btn_Cancle.Margin = new System.Windows.Forms.Padding(1);
             this.btn_Cancle.Name = "btn_Cancle";
             this.btn_Cancle.Size = new System.Drawing.Size(62, 30);
             this.btn_Cancle.TabIndex = 2;
             this.btn_Cancle.Text = "Cancle";
             this.btn_Cancle.UseVisualStyleBackColor = true;
             this.btn_Cancle.Click += new System.EventHandler(this.btn_Cancle_Click);
-            // 
-            // txtBoxStreetNr
-            // 
-            this.txtBoxStreetNr.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxStreetNr.Location = new System.Drawing.Point(515, 10);
-            this.txtBoxStreetNr.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
-            this.txtBoxStreetNr.Name = "txtBoxStreetNr";
-            this.txtBoxStreetNr.Size = new System.Drawing.Size(35, 27);
-            this.txtBoxStreetNr.TabIndex = 1;
-            this.txtBoxStreetNr.TextChanged += new System.EventHandler(this.txtBox_TextChangedString);
             // 
             // btn_Delete
             // 
@@ -255,6 +245,16 @@
             this.btn_Delete.UseVisualStyleBackColor = true;
             this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
             // 
+            // txtBoxStreetNr
+            // 
+            this.txtBoxStreetNr.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxStreetNr.Location = new System.Drawing.Point(515, 10);
+            this.txtBoxStreetNr.Margin = new System.Windows.Forms.Padding(1);
+            this.txtBoxStreetNr.Name = "txtBoxStreetNr";
+            this.txtBoxStreetNr.Size = new System.Drawing.Size(35, 27);
+            this.txtBoxStreetNr.TabIndex = 1;
+            this.txtBoxStreetNr.TextChanged += new System.EventHandler(this.txtBox_TextChangedString);
+            // 
             // CustomerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -262,7 +262,7 @@
             this.ClientSize = new System.Drawing.Size(593, 334);
             this.Controls.Add(this.txtBoxStreetNr);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.Margin = new System.Windows.Forms.Padding(1);
             this.Name = "CustomerForm";
             this.Text = "CustomerForm";
             this.tableLayoutPanel1.ResumeLayout(false);

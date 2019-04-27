@@ -8,7 +8,7 @@ namespace SWE_Project_PALA
 {
     enum Categories
     {
-    CNr, Firstname, Lastname, Email, Balance,LastChange, Postcode, City, Street, Nr
+        CNr, Firstname, Lastname, Email, Balance,LastChange, Postcode, City, Street, Nr
 
     }
 }

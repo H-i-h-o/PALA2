@@ -17,11 +17,11 @@ namespace SWE_Project_PALA
         public int CustomerNumber { private set; get; }
         public int AccountBalance { private set; get; }
         public DateTime LastAccess { private set; get; }
-        public Adresse CustAdresse { private set; get; }
+        public Address CustAdresse { private set; get; }
 
         #region Constructor
 
-        public Customer(int customerNumber, string firstName, string lastName, Email emailAddress, Adresse custAdresse)
+        public Customer(int customerNumber, string firstName, string lastName, Email emailAddress, Address custAdresse)
         {
             FirstName = firstName;
             LastName = lastName;
@@ -31,7 +31,7 @@ namespace SWE_Project_PALA
             CustomerNumber = customerNumber;
             CustAdresse = custAdresse;
         }
-        public Customer(int customerNumber, string firstName, string lastName, string emailAddress, Adresse custAdresse, DateTime lastAccess)
+        public Customer(int customerNumber, string firstName, string lastName, string emailAddress, Address custAdresse, DateTime lastAccess)
         {
             FirstName = firstName;
             LastName = lastName;
@@ -41,7 +41,7 @@ namespace SWE_Project_PALA
             CustomerNumber = customerNumber;
             CustAdresse = custAdresse;
         }
-        public Customer(int customerNumber, string firstName, string lastName, string emailAddress, Adresse custAdresse, DateTime lastAccess, int accountBalance)
+        public Customer(int customerNumber, string firstName, string lastName, string emailAddress, Address custAdresse, DateTime lastAccess, int accountBalance)
         {
             FirstName = firstName;
             LastName = lastName;
@@ -60,7 +60,7 @@ namespace SWE_Project_PALA
             EmailAddress = new Email(customerInfoArray[3].Text);
             AccountBalance = Convert.ToInt32(customerInfoArray[4].Text);
             LastAccess = DateTime.Parse(customerInfoArray[5].Text);
-            CustAdresse = new Adresse(customerInfoArray[8].Text, customerInfoArray[9].Text, Convert.ToInt32(customerInfoArray[6].Text), customerInfoArray[7].Text);
+            CustAdresse = new Address(customerInfoArray[8].Text, customerInfoArray[9].Text, Convert.ToInt32(customerInfoArray[6].Text), customerInfoArray[7].Text);
 
         }
         #endregion
@@ -68,14 +68,14 @@ namespace SWE_Project_PALA
         public static Customer parseCustomer(string text)
         {
             string[] parts = text.Split(';');
-            return new Customer(int.Parse(parts[0]), parts[1], parts[2], parts[3], new Adresse(parts[4]), DateTime.Parse(parts[5]), int.Parse(parts[6]));
+            return new Customer(int.Parse(parts[0]), parts[1], parts[2], parts[3], new Address(parts[4]), DateTime.Parse(parts[5]), int.Parse(parts[6]));
         }   
 
         public static Customer ParseAndDecryptCustomer(string text)
         {
             string[] parts = Crypto.DecodeLine(text);
 
-            return new Customer(int.Parse(parts[0]), parts[1], parts[2], parts[3], new Adresse(parts[4]), DateTime.Parse(parts[5]),int.Parse(parts[6]));
+            return new Customer(int.Parse(parts[0]), parts[1], parts[2], parts[3], new Address(parts[4]), DateTime.Parse(parts[5]),int.Parse(parts[6]));
         }
 
         public void ChangeToAccountBalance(int expense)
@@ -110,7 +110,7 @@ namespace SWE_Project_PALA
             EmailAddress.ChangeEmail(emailAddress);
         }
 
-        public void ChangeAdresse(Adresse custAdresse)
+        public void ChangeAdresse(Address custAdresse)
         {
             CustAdresse = custAdresse;
         }
