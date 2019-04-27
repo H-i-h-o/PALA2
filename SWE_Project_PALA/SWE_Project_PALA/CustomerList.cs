@@ -161,11 +161,11 @@ namespace SWE_Project_PALA
         }
         private static int CompareByAccountBalance(Customer x, Customer y)
         {
-            if (x.AccountBalance < y.AccountBalance)
+            if (x.AccountBalance > y.AccountBalance)
             {
                 return 1;
             }
-            else if (x.AccountBalance > y.AccountBalance)
+            else if (x.AccountBalance < y.AccountBalance)
             {
                 return -1;
             }
@@ -193,55 +193,105 @@ namespace SWE_Project_PALA
         {
             return DateTime.Compare(x.LastAccess, y.LastAccess);
         }
-        /// <summary>
-        /// Filters the customer list by the FIRST NAME and returns all customers, which contain the searchFirstName
-        /// </summary>
-        /// <param name="searchFirstName"></param>
-        /// <returns></returns>
-        //public List<Customer> FilterByFirstName(string searchFirstName)
-        //{
-        //    foreach (Customer customer in CustList)
-        //    {
-        //        if (!customer.FirstName.ToLower().Contains(searchFirstName.ToLower()))
-        //        {
-        //            CustList.Remove(customer);
-        //        }
-        //    }
-        //    return CustList;
-        //}
-        /// <summary>
-        /// Filters the customer list by the LAST NAME and returns all customers, which contain the searchLastName
-        /// </summary>
-        /// <param name="searchFirstName"></param>
-        /// <returns></returns>
-        //public List<Customer> FilterByLastName(string searchLastName)
-        //{
-        //    foreach (Customer customer in CustList)
-        //    {
-        //        if (!customer.LastName.ToLower().Contains(searchLastName.ToLower()))
-        //        {
-        //            CustList.Remove(customer);
-        //        }
-        //    }
-        //    return CustList;
-        //}
-        /// <summary>
-        /// Filters the customer list by the EMAIL ADRESS and returns all customers, which contain the searchEmail
-        /// </summary>
-        /// <param name="searchEmail"></param>
-        /// <returns></returns>
-        //public List<Customer> FilterByEmail(string searchEmail)
-        //{
-        //    foreach (Customer customer in CustList)
-        //    {
-        //        if (!customer.EmailAddress.EmailAddress.ToLower().Contains(searchEmail.ToLower()))
-        //        {
-        //            CustList.Remove(customer);
-        //        }
-        //    }
-        //    return CustList;
-        //}
         #endregion
 
+        #region filtering
+
+        /// <summary>
+        /// Filters the customer list by the FIRST NAME and returns a list including all customers, which contain the searchFirstName
+        /// </summary>
+        /// <param name="searchFirstName"></param>
+        /// <returns></returns>
+        public List<Customer> FilterByFirstName(string searchFirstName)
+        {
+            List<Customer> FilteredList = new List<Customer>();
+
+            foreach (Customer customer in CustList)
+            {
+                if (customer.FirstName.ToLower().Contains(searchFirstName.ToLower()))
+                {
+                    FilteredList.Add(customer);
+                }
+            }
+            return FilteredList;
+        }
+
+        /// <summary>
+        /// Filters the customer list by the FIRST NAME and returns a list including all customers, which contain the searchFirstName
+        /// </summary>
+        /// <param name="searchFirstName"></param>
+        /// <returns></returns>
+        public List<Customer> FilterByLastName(string searchLastName)
+        {
+            List<Customer> FilteredList = new List<Customer>();
+
+            foreach (Customer customer in CustList)
+            {
+                if (customer.LastName.ToLower().Contains(searchLastName.ToLower()))
+                {
+                    FilteredList.Add(customer);
+                }
+            }
+            return FilteredList;
+        }
+
+        /// <summary>
+        /// Filters the customer list by the EMAIL and returns a list including all customers, which contain the searchEmail
+        /// </summary>
+        /// <param name="searchFirstName"></param>
+        /// <returns></returns>
+        public List<Customer> FilterByEmail(string searchEmail)
+        {
+            List<Customer> FilteredList = new List<Customer>();
+
+            foreach (Customer customer in CustList)
+            {
+                if (customer.EmailAddress.EmailAddress.ToLower().Contains(searchEmail.ToLower()))
+                {
+                    FilteredList.Add(customer);
+                }
+            }
+            return FilteredList;
+        }
+
+        /// <summary>
+        /// Filters the customer list by the POSTAL CODE and returns a list including all customers, which contain the searchPostCode
+        /// </summary>
+        /// <param name="searchFirstName"></param>
+        /// <returns></returns>
+        public List<Customer> FilterByPostCode(string searchPostCode)
+        {
+            List<Customer> FilteredList = new List<Customer>();
+
+            foreach (Customer customer in CustList)
+            {
+                if (customer.CustAdresse.PostCode.ToString().ToLower().Contains(searchPostCode.ToLower()))
+                {
+                    FilteredList.Add(customer);
+                }
+            }
+            return FilteredList;
+        }
+
+        /// <summary>
+        /// Filters the customer list by the CITY and returns a list including all customers, which contain the searchCity
+        /// </summary>
+        /// <param name="searchFirstName"></param>
+        /// <returns></returns>
+        public List<Customer> FilterByCity(string searchCity)
+        {
+            List<Customer> FilteredList = new List<Customer>();
+
+            foreach (Customer customer in CustList)
+            {
+                if (customer.CustAdresse.City.ToLower().Contains(searchCity.ToLower()))
+                {
+                    FilteredList.Add(customer);
+                }
+            }
+            return FilteredList;
+        }
+
+        #endregion
     }
 }

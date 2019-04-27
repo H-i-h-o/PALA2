@@ -208,12 +208,39 @@ namespace SWE_Project_PALA
                         case "Last Access":
                             SubList.CustList = CustList.SortByLastAccess(SFForm.SortDescending);
                             break;
+
+                        default:
+                            break;
                     }
                 }
                 //what to do with sublist?? does it overwrite the whole customer list??
                 if(SFForm.FilterList)
                 {
-                    //code for filtering the list
+                    switch (SFForm.FilterBy)
+                    {
+                        case "First name":
+                            SubList.CustList = CustList.FilterByFirstName(SFForm.FilterSearchString);
+                            break;
+
+                        case "Last name":
+                            SubList.CustList = CustList.FilterByLastName(SFForm.FilterSearchString);
+                            break;
+
+                        case "Email":
+                            SubList.CustList = CustList.FilterByEmail(SFForm.FilterSearchString);
+                            break;
+
+                        case "Postal code":
+                            SubList.CustList = CustList.FilterByPostCode(SFForm.FilterSearchString);
+                            break;
+
+                        case "City":
+                            SubList.CustList = CustList.FilterByCity(SFForm.FilterSearchString);
+                            break;
+
+                        default:
+                            break;
+                    }
                 }
 
                 RefreshListBox(this, new EventArgsListBox(SubList.CustList));
@@ -246,6 +273,11 @@ namespace SWE_Project_PALA
                 btn_Delete.Enabled = false;
 
             }
+        }
+
+        private void ShowAllBtn_Click(object sender, EventArgs e)
+        {
+            RefreshListBox(this, new EventArgsListBox(this.CustList.CustList));
         }
     }
 }

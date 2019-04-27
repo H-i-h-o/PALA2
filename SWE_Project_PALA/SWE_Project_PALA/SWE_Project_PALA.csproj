@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SWE_Project_PALA</RootNamespace>
     <AssemblyName>SWE_Project_PALA</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
@@ -59,7 +59,7 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>SWE_Project_PALA.Program</StartupObject>
@@ -95,7 +95,6 @@
       <DependentUpon>CustomerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="CustomerList.cs" />
-    <Compile Include="CustomerSorter.cs" />
     <Compile Include="Email.cs" />
     <Compile Include="EventArgsFolder\EventArgsListBox.cs" />
     <Compile Include="EventArgsFolder\EventArgsCustomerChange.cs" />

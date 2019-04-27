@@ -12,9 +12,9 @@ namespace SWE_Project_PALATests
         public void TestCSVHandling()
         {
             CustomerList CList1 = new CustomerList();
-            CList1.CustList.Add(new Customer(1, "Patrick", "Gehmayr", "patrick.gehmayr@gmail.com", -155, new Adresse("Street", "12", 4201, "Traun"), new DateTime(2016, 3, 26)));
-            CList1.CustList.Add(new Customer(2, "Laurenz", "Hiho", "l.hiho@mail.at", 2365, new Adresse("Streeter", "1", 4201, "Hochkar"), new DateTime(2018, 10, 3)));
-            CList1.CustList.Add(new Customer(3, "Max", "Mustermann", "max.muster@anymail.any", int.MinValue, new Adresse("Lina", "9a", 4311, "Schwertberg"), new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day)));
+            CList1.CustList.Add(new Customer(1, "Patrick", "Gehmayr", "patrick.gehmayr@gmail.com", new Adresse("Street", "12", 4201, "Traun"), new DateTime(2016, 3, 26), -155));
+            CList1.CustList.Add(new Customer(2, "Laurenz", "Hiho", "l.hiho@mail.at", new Adresse("Streeter", "1", 4201, "Hochkar"), new DateTime(2018, 10, 3), 2365));
+            CList1.CustList.Add(new Customer(3, "Max", "Mustermann", "max.muster@anymail.any", new Adresse("Lina", "9a", 4311, "Schwertberg"), new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day), int.MinValue));
 
             string TestPath = @"C:\Users\patri\source\repos\H-i-h-o\PALA2\SWE_Project_PALA\SWE_Project_PALA\bin\Debug\TestFileCSVHandling.csv";
             CSVHandling.SaveCustomerListToCSV(CList1, TestPath);

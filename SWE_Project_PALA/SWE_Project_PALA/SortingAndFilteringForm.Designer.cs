@@ -32,7 +32,7 @@ namespace SWE_Project_PALA
         /// </summary>
         private void InitializeComponent()
         {
-            this.SortCheckBox = new CheckBox();
+            this.SortCheckBox = new System.Windows.Forms.CheckBox();
             this.FilterCheckBox = new System.Windows.Forms.CheckBox();
             this.SortGroupBox = new System.Windows.Forms.GroupBox();
             this.SortComboBox = new System.Windows.Forms.ComboBox();
@@ -147,7 +147,9 @@ namespace SWE_Project_PALA
             this.FilterComboBox.Items.AddRange(new object[] {
             "First name",
             "Last name",
-            "Email"});
+            "Email",
+            "Postal code",
+            "City"});
             this.FilterComboBox.Location = new System.Drawing.Point(18, 36);
             this.FilterComboBox.Name = "FilterComboBox";
             this.FilterComboBox.Size = new System.Drawing.Size(137, 24);
