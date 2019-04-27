@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace SWE_Project_PALA
 {
@@ -49,6 +50,17 @@ namespace SWE_Project_PALA
             LastAccess = lastAccess;
             CustomerNumber = customerNumber;
             CustAdresse = custAdresse;
+
+        }
+        public Customer(ListViewItem.ListViewSubItemCollection customerInfoArray)
+        {
+            CustomerNumber = Convert.ToInt32(customerInfoArray[0]);
+            FirstName = customerInfoArray[1].Text;
+            LastName = customerInfoArray[2].Text;
+            EmailAddress = new Email(customerInfoArray[3].Text);
+            AccountBalance = Convert.ToInt32(customerInfoArray[4].Text);
+            LastAccess = DateTime.Parse(customerInfoArray[5].Text);
+            CustAdresse = new Adresse(customerInfoArray[8].Text, customerInfoArray[9].Text, Convert.ToInt32(customerInfoArray[6].Text), customerInfoArray[7].Text);
 
         }
         #endregion
@@ -106,6 +118,17 @@ namespace SWE_Project_PALA
         public override string ToString()
         {
             return CustomerNumber + ", " + FirstName + ", " + LastName + ", " + EmailAddress.Print() + ", " + CustAdresse.ToString() + ", " + LastAccess.ToShortDateString() + ", " + AccountBalance;
+        }
+
+        //            return Crypto.EncodeLine(new string[] { CustomerNumber.ToString(), FirstName, LastName, EmailAddress.Print(), CustAdresse.ToCSVString(), LastAccess.ToShortDateString(), AccountBalance.ToString() });
+        public string[] GetListViewItemRange()
+        {
+            string[] arr = new string[11]
+            {
+                CustomerNumber.ToString(), FirstName, LastName, EmailAddress.Print(), AccountBalance.ToString(), CustAdresse.PostCode.ToString(),CustAdresse.City,CustAdresse.Street,CustAdresse.StreetNr.ToString(),
+                LastAccess.ToShortDateString(),""
+            };
+            return arr;
         }
     }
 }
