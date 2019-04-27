@@ -13,10 +13,11 @@ namespace SWE_Project_PALA
         public List<Customer> CustList = new List<Customer>();
         public event EventHandler CustomerListChangedHappened;
         public event EventHandler WriteToLogFileAvailable;
+        public int MemberCounter { get; set; }
 
         public CustomerList()
         {
-            
+            MemberCounter = 0;
         }
 
         public StringBuilder PrintCustomerList()
@@ -35,6 +36,7 @@ namespace SWE_Project_PALA
             if (e.GetType() == typeof(EventArgsCustomerChange))
             {
                 CustList.Add(((EventArgsCustomerChange)e).Cust);
+                MemberCounter++;
                 CustomerListChanged();
             }
         }
@@ -51,7 +53,7 @@ namespace SWE_Project_PALA
                 if (((EventArgsCustomerChange) e).Cust.AccountBalance == 0)
                 {
                     CustList.Remove(((EventArgsCustomerChange)e).Cust);
-                    WriteToLogFileAvailable(this, new EventArgsLogFileEntryAvailable(((EventArgsCustomerChange)e).Cust.FirstName + ((EventArgsCustomerChange)e).Cust.LastName + " deleted" + System.DateTime.Today.ToShortDateString()));
+                    WriteToLogFileAvailable(this, new EventArgsLogFileEntryAvailable(((EventArgsCustomerChange)e).Cust.FirstName + " " + ((EventArgsCustomerChange)e).Cust.LastName + " deleted" + System.DateTime.Today.ToShortDateString()));
                     CustomerListChanged();
                 }
                 else

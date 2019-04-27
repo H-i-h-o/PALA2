@@ -211,6 +211,7 @@
             // 
             // btn_Save
             // 
+            this.btn_Save.Enabled = false;
             this.btn_Save.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Save.Location = new System.Drawing.Point(277, 226);
             this.btn_Save.Margin = new System.Windows.Forms.Padding(1);
@@ -235,6 +236,7 @@
             // 
             // btn_Delete
             // 
+            this.btn_Delete.Enabled = false;
             this.btn_Delete.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Delete.Location = new System.Drawing.Point(139, 226);
             this.btn_Delete.Margin = new System.Windows.Forms.Padding(1);

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SWE_Project_PALA.EventArgsFolder;
 
 namespace SWE_Project_PALA
 {
@@ -78,27 +79,35 @@ namespace SWE_Project_PALA
 
         public int GetNewCustomerNumber()
         {
-            return CustList.CustList.Count() + 1;
+            return CustList.MemberCounter + 1;
+        }
+
+        public void SetCurrentCustNumber(object sender, EventArgs e)
+        {
+            if (e.GetType() == typeof(EventArgsCurrentCustNr))
+            {
+                CustList.MemberCounter = ((EventArgsCurrentCustNr) e).CurrentCustNr;
+            }
         }
 
         public void RefreshListBox(object sender, EventArgs e)
         {
-            CustomerList myCustList = new CustomerList();
+            List<Customer> myCustList = new List<Customer>();
             listViewCustomer.Items.Clear();
 
             if (e.GetType() == typeof(EventArgsListBox))
             {
-                myCustList.CustList = ((EventArgsListBox) e).CustList;
+                myCustList = ((EventArgsListBox) e).CustList;
             }
             else
             {
-                myCustList.CustList = CustList.CustList;
+                myCustList = CustList.CustList;
             }
 
-            for (int i = 0; i < myCustList.CustList.Count; i++)
+            for (int i = 0; i < myCustList.Count; i++)
 
             {
-                Customer Cust = myCustList.CustList[i];
+                Customer Cust = myCustList[i];
 
                 string[] arr = new string[11];
                 ListViewItem itemToAdd;
@@ -157,13 +166,14 @@ namespace SWE_Project_PALA
         
         private void SaveCustomList()
         {
-            CSVHandling.SaveCustomerListToCSV(CustList, PathCList);
+            CSVHandling.SaveCustomerListToCSV(CustList.MemberCounter, CustList, PathCList);
         }
 
         private CustomerList LoadCustomList()
         {
             if (File.Exists(PathCList))
             {
+                CSVHandling.CurrentCustNrAvailable += new EventHandler(SetCurrentCustNumber);
                 return CSVHandling.LoadCustomerListFromCSV(PathCList);
             }
             else

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SWE_Project_PALA.EventArgsFolder;
 
 namespace SWE_Project_PALA
 {
@@ -13,18 +14,20 @@ namespace SWE_Project_PALA
     /// </summary>
     static public class CSVHandling
     {
+        public static event EventHandler  CurrentCustNrAvailable;
         /// <summary>
         /// Saves all items of custlist encoded to csv-file at path
         /// </summary>
         /// <param name="custList"></param>
         /// <param name="path"></param>
-        public static void SaveCustomerListToCSV(CustomerList custList, string path)
+        public static void SaveCustomerListToCSV(int CurrentCustNr, CustomerList custList, string path)
         {
             StreamWriter SWriter = null;
 
             try
             {
                 SWriter = new StreamWriter(path) {AutoFlush = true};
+                SWriter.WriteLine(CurrentCustNr);
                 SWriter.Write(custList.PrintCustomerList());
             }
             catch (Exception ex)
@@ -53,6 +56,9 @@ namespace SWE_Project_PALA
             try
             {
                 SReader = new StreamReader(path);
+                CustList.MemberCounter = Convert.ToInt32(SReader.ReadLine());
+                CurrentCustNrAvailable("LoadedList", new EventArgsCurrentCustNr(CustList.MemberCounter));
+
                 while (SReader.Peek() != -1)
                 {
                     CustList.CustList.Add(Customer.ParseAndDecryptCustomer(SReader.ReadLine()));//change to ParseAndDecryptCustomer!!

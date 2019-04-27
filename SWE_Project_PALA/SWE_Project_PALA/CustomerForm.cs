@@ -89,6 +89,7 @@ namespace SWE_Project_PALA
             {
                 ((TextBox)sender).BackColor = System.Drawing.Color.Green;
             }
+            CheckIfComplete();
         }
 
         private void txtBox_TextChangedInt(object sender, EventArgs e)
@@ -106,22 +107,7 @@ namespace SWE_Project_PALA
 
                 }
             }
-            if (txtBoxPostCode.Text.Length > 0 &&
-                txtBoxCity.Text.Length > 0 &&
-                Email.CheckEmailInput(txtBoxEmail.Text) &&
-                txtBoxFirstName.Text.Length > 0 &&
-                txtBoxLastName.Text.Length > 0 &&
-                txtBoxStreet.Text.Length > 0 &&
-                txtBoxStreetNr.Text.Length > 0)
-            {
-                btn_Delete.Enabled = true;
-                btn_Cancle.Enabled = true;
-            }
-            else
-            {
-                btn_Delete.Enabled = false;
-                btn_Cancle.Enabled = false;
-            }
+            CheckIfComplete();
         }
 
 
@@ -134,6 +120,26 @@ namespace SWE_Project_PALA
         {
             CustomerDeleteAvailable?.Invoke(this, new EventArgsCustomerChange(Cust));
 
+        }
+
+        private void CheckIfComplete()
+        {
+            if (txtBoxPostCode.Text.Length > 0 &&
+                txtBoxCity.Text.Length > 0 &&
+                Email.CheckEmailInput(txtBoxEmail.Text) &&
+                txtBoxFirstName.Text.Length > 0 &&
+                txtBoxLastName.Text.Length > 0 &&
+                txtBoxStreet.Text.Length > 0 &&
+                txtBoxStreetNr.Text.Length > 0)
+            {
+                btn_Delete.Enabled = true;
+                btn_Save.Enabled = true;
+            }
+            else
+            {
+                btn_Delete.Enabled = false;
+                btn_Save.Enabled = false;
+            }
         }
     }
 }

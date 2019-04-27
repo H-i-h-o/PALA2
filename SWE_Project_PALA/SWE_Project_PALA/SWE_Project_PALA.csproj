@@ -96,6 +96,7 @@
     </Compile>
     <Compile Include="CustomerList.cs" />
     <Compile Include="Email.cs" />
+    <Compile Include="EventArgsFolder\EventArgsCurrentCustNr.cs" />
     <Compile Include="EventArgsFolder\EventArgsListBox.cs" />
     <Compile Include="EventArgsFolder\EventArgsCustomerChange.cs" />
     <Compile Include="EventArgsFolder\EventArgsLogFileEntryAvailable.cs" />
