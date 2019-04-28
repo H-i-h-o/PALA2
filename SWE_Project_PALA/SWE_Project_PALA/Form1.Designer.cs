@@ -114,7 +114,7 @@
             // 
             this.ShowAllBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ShowAllBtn.Location = new System.Drawing.Point(793, 556);
-            this.ShowAllBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ShowAllBtn.Margin = new System.Windows.Forms.Padding(2);
             this.ShowAllBtn.Name = "ShowAllBtn";
             this.ShowAllBtn.Size = new System.Drawing.Size(168, 63);
             this.ShowAllBtn.TabIndex = 7;
@@ -169,9 +169,8 @@
             this.lab_CustNr.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lab_CustNr.Location = new System.Drawing.Point(3, 19);
             this.lab_CustNr.Name = "lab_CustNr";
-            this.lab_CustNr.Size = new System.Drawing.Size(46, 17);
+            this.lab_CustNr.Size = new System.Drawing.Size(0, 17);
             this.lab_CustNr.TabIndex = 1;
-            this.lab_CustNr.Text = "label2";
             // 
             // label3
             // 
@@ -215,9 +214,8 @@
             this.lab_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lab_name.Location = new System.Drawing.Point(3, 69);
             this.lab_name.Name = "lab_name";
-            this.lab_name.Size = new System.Drawing.Size(46, 17);
+            this.lab_name.Size = new System.Drawing.Size(0, 17);
             this.lab_name.TabIndex = 1;
-            this.lab_name.Text = "label2";
             // 
             // lab_email
             // 
@@ -225,9 +223,8 @@
             this.lab_email.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lab_email.Location = new System.Drawing.Point(3, 119);
             this.lab_email.Name = "lab_email";
-            this.lab_email.Size = new System.Drawing.Size(46, 17);
+            this.lab_email.Size = new System.Drawing.Size(0, 17);
             this.lab_email.TabIndex = 1;
-            this.lab_email.Text = "label2";
             // 
             // lab_balance
             // 
@@ -235,9 +232,8 @@
             this.lab_balance.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lab_balance.Location = new System.Drawing.Point(3, 169);
             this.lab_balance.Name = "lab_balance";
-            this.lab_balance.Size = new System.Drawing.Size(46, 17);
+            this.lab_balance.Size = new System.Drawing.Size(0, 17);
             this.lab_balance.TabIndex = 1;
-            this.lab_balance.Text = "label2";
             // 
             // lab_Adress
             // 
@@ -245,9 +241,8 @@
             this.lab_Adress.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lab_Adress.Location = new System.Drawing.Point(3, 219);
             this.lab_Adress.Name = "lab_Adress";
-            this.lab_Adress.Size = new System.Drawing.Size(35, 13);
+            this.lab_Adress.Size = new System.Drawing.Size(0, 13);
             this.lab_Adress.TabIndex = 1;
-            this.lab_Adress.Text = "label2";
             // 
             // Form1
             // 

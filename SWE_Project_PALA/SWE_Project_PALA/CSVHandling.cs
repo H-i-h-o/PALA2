@@ -14,9 +14,14 @@ namespace SWE_Project_PALA
     /// </summary>
     static public class CSVHandling
     {
+        
+        // gives the possibility to get the event to set the Current Customer Number from the CSV List
         public static event EventHandler  CurrentCustNrAvailable;
+
         /// <summary>
-        /// Saves all items of custlist encoded to csv-file at path
+        /// Saves all items of custlist encoded to csv-file with the given path
+        /// the csv file consists in the first line of the current customer number 
+        /// followed by each customer encrypted and transferred to the csv format in the class CustomerList
         /// </summary>
         /// <param name="custList"></param>
         /// <param name="path"></param>
@@ -44,7 +49,8 @@ namespace SWE_Project_PALA
         }
 
         /// <summary>
-        /// Loads all lines from the csv-file with path; parses a Customer for each line and returns all Customers in a CustomerList
+        /// Loads all lines from the csv-file with path; parses and decrypt a Customer for each line and returns all Customers in a CustomerList
+        /// it sets the current customer number of the customer list to the value saved in the first line of the csv line and releases a event in case someone wants to get it too
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
@@ -56,12 +62,14 @@ namespace SWE_Project_PALA
             try
             {
                 SReader = new StreamReader(path);
+                //first line is reserved for the current customer number of the last time, it is then set up the current number of the customerlist and released the event
                 CustList.MemberCounter = Convert.ToInt32(SReader.ReadLine());
                 CurrentCustNrAvailable("LoadedList", new EventArgsCurrentCustNr(CustList.MemberCounter));
 
                 while (SReader.Peek() != -1)
                 {
-                    CustList.CustList.Add(Customer.ParseAndDecryptCustomer(SReader.ReadLine()));//change to ParseAndDecryptCustomer!!
+                    //reads the file to the end, decrypt and adds the customer to the customer list
+                    CustList.CustList.Add(Customer.ParseAndDecryptCustomer(SReader.ReadLine()));
                 }
                 return CustList;
             }
@@ -81,17 +89,19 @@ namespace SWE_Project_PALA
 
         /// <summary>
         /// Saves a string line to a csv file
+        /// used to generate Log files or other csv documents
+        /// string and path needed
         /// </summary>
-        /// <param name="custList"></param>
+        /// <param name="stringToWrite"></param>
         /// <param name="path"></param>
-        public static void StringToCSV(string sringToWrite, string path)
+        public static void StringToCSV(string stringToWrite, string path)
         {
             StreamWriter SWriter = null;
             try
             {
                 SWriter = new StreamWriter(path) {AutoFlush = true};
 
-                SWriter.Write(sringToWrite);
+                SWriter.Write(stringToWrite);
             }
             catch (Exception ex)
             {

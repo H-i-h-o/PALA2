@@ -9,6 +9,10 @@ using System.Windows.Forms;
 
 namespace SWE_Project_PALA
 {
+    /// <summary>
+    /// type Customer, stores all information of one customer
+    /// meant to be stored in a list
+    /// </summary>
     public class Customer
     {
         public string FirstName { private set;  get; }
@@ -20,7 +24,11 @@ namespace SWE_Project_PALA
         public Address CustAdresse { private set; get; }
 
         #region Constructor
-
+        /* different constructors, used in different phases of the customer implementatino
+         * to generate new user
+         * to add a whole previous user without balance
+         * ... and with balance
+         */
         public Customer(int customerNumber, string firstName, string lastName, Email emailAddress, Address custAdresse)
         {
             FirstName = firstName;
@@ -52,25 +60,14 @@ namespace SWE_Project_PALA
             CustAdresse = custAdresse;
 
         }
-        public Customer(ListViewItem.ListViewSubItemCollection customerInfoArray)
-        {
-            CustomerNumber = Convert.ToInt32(customerInfoArray[0]);
-            FirstName = customerInfoArray[1].Text;
-            LastName = customerInfoArray[2].Text;
-            EmailAddress = new Email(customerInfoArray[3].Text);
-            AccountBalance = Convert.ToInt32(customerInfoArray[4].Text);
-            LastAccess = DateTime.Parse(customerInfoArray[5].Text);
-            CustAdresse = new Address(customerInfoArray[8].Text, customerInfoArray[9].Text, Convert.ToInt32(customerInfoArray[6].Text), customerInfoArray[7].Text);
-
-        }
         #endregion
-
+        // parses uncrypted csv info to customer and returns it
         public static Customer parseCustomer(string text)
         {
             string[] parts = text.Split(';');
             return new Customer(int.Parse(parts[0]), parts[1], parts[2], parts[3], new Address(parts[4]), DateTime.Parse(parts[5]), int.Parse(parts[6]));
         }   
-
+        // decrypt and parses the csv info to a customer and returns it
         public static Customer ParseAndDecryptCustomer(string text)
         {
             string[] parts = Crypto.DecodeLine(text);
@@ -119,8 +116,7 @@ namespace SWE_Project_PALA
         {
             return CustomerNumber + ", " + FirstName + ", " + LastName + ", " + EmailAddress.Print() + ", " + CustAdresse.ToString() + ", " + LastAccess.ToShortDateString() + ", " + AccountBalance;
         }
-
-        //            return Crypto.EncodeLine(new string[] { CustomerNumber.ToString(), FirstName, LastName, EmailAddress.Print(), CustAdresse.ToCSVString(), LastAccess.ToShortDateString(), AccountBalance.ToString() });
+        // sets the Customer up to a array used to show data in the 
         public string[] GetListViewItemRange()
         {
             string[] arr = new string[11]

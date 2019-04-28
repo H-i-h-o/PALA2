@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace SWE_Project_PALA
 {
+    /// <summary>
+    /// Class Address
+    /// new type address, possible to put to string or csv code after implementation
+    /// saves lines of code during implementation of customer
+    /// </summary>
     public class Address
     {
         public string Street { private set; get; }
@@ -20,16 +25,17 @@ namespace SWE_Project_PALA
             PostCode = postCode;
             City = city.Trim();
         }
-
+        /*special constructor for the loading of a customer address from a csv file to save code
+         */
         public Address(string streetAndStreetNrAndpostCodeAndCity)
         {
-            string[] adress = streetAndStreetNrAndpostCodeAndCity.Split(';');
-            if (adress.Length == 4)
+            string[] address = streetAndStreetNrAndpostCodeAndCity.Split(';');
+            if (address.Length == 4)
             {
-                Street = adress[0];
-                StreetNr = adress[1];
-                PostCode = Convert.ToInt32(adress[2]);
-                City = adress[3];
+                Street = address[0];
+                StreetNr = address[1];
+                PostCode = Convert.ToInt32(address[2]);
+                City = address[3];
             }
         }
 

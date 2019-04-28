@@ -8,6 +8,7 @@ namespace SWE_Project_PALA
 {
     /// <summary>
     /// The static class Crypt can be used to encode or decode lines of a csv-file
+    /// Encrypting done by shifting the char by one back
     /// </summary>
     static public class Crypto
     {
@@ -48,7 +49,7 @@ namespace SWE_Project_PALA
         }
 
         /// <summary>
-        /// Splits the input (line from a csv-file), decodes the elments and returns the decoded elements
+        /// Splits the input (line from a csv-file), decodes the elements and returns the decoded elements
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>

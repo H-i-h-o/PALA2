@@ -51,7 +51,7 @@ namespace SWE_Project_PALA
                 {
                     Cust.ChangeEmail(txtBoxEmail.Text);
                     Cust.ChangeName(txtBoxFirstName.Text,txtBoxLastName.Text);
-                    Cust.ChangeAdresse(new Address(txtBoxStreet.Text, (txtBoxEmail.Text), int.Parse(txtBoxPostCode.Text), txtBoxCity.Text));
+                    Cust.ChangeAdresse(new Address(txtBoxStreet.Text, txtBoxStreetNr.Text, int.Parse(txtBoxPostCode.Text), txtBoxCity.Text));
                     this.Close();
                 }
             }
