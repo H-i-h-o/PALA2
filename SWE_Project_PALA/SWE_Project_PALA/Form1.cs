@@ -22,9 +22,9 @@ namespace SWE_Project_PALA
     {
         public CustomerList CustList = new CustomerList();
         //paths meant to locate the csv and the log files
-        private static readonly string PathCList = Application.StartupPath + "\\CList_crypted.csv";
-        private static readonly string PathLoginLogFile = Application.StartupPath + "\\LoginLogFile.csv";
-        private static readonly string PathCustomerDeleteLogFile = Application.StartupPath + "\\CustomerDeleteLogFile.csv";
+        private static readonly string PathCList = Path.Combine(Application.StartupPath, "\\CList_crypted.csv");
+        private static readonly string PathLoginLogFile = Path.Combine(Application.StartupPath, "\\LoginLogFile.csv");
+        private static readonly string PathCustomerDeleteLogFile = Path.Combine(Application.StartupPath, "\\CustomerDeleteLogFile.csv");
 
 
         public Form1()
