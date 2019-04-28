@@ -35,9 +35,27 @@ namespace SWE_Project_PALA
         {
             if (e.GetType() == typeof(EventArgsCustomerChange))
             {
-                CustList.Add(((EventArgsCustomerChange)e).Cust);
-                MemberCounter++;
-                CustomerListChanged();
+                Customer CustomerToAdd = ((EventArgsCustomerChange)e).Cust;
+
+                bool EmailInList = false;
+                foreach (Customer customer in this.CustList)
+                {
+                    if(customer.EmailAddress.EmailAddress == CustomerToAdd.EmailAddress.EmailAddress)
+                    {
+                        EmailInList = true;
+                    }
+                }
+
+                if(!EmailInList)
+                {
+                    CustList.Add(((EventArgsCustomerChange)e).Cust);
+                    MemberCounter++;
+                    CustomerListChanged();
+                }
+                else
+                {
+                    MessageBox.Show("A customer with the email address " + CustomerToAdd.EmailAddress.EmailAddress + " already exists in your customer list!");
+                }
             }
         }
 
