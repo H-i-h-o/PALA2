@@ -84,14 +84,14 @@ namespace SWE_Project_PALA
         /// </summary>
         /// <param name="custList"></param>
         /// <param name="path"></param>
-        public static void StringToCSV(string sringToWrite, string path)
+        public static void StringToCSV(string stringToWrite, string path)
         {
             StreamWriter SWriter = null;
             try
             {
                 SWriter = new StreamWriter(path) {AutoFlush = true};
 
-                SWriter.Write(sringToWrite);
+                SWriter.Write(stringToWrite);
             }
             catch (Exception ex)
             {
