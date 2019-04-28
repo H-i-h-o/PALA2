@@ -10,6 +10,11 @@ using System.Windows.Forms;
 
 namespace SWE_Project_PALA
 {
+    /// <summary>
+    /// Form to change customer balance
+    /// used buttons to differ between money spent and got
+    /// value txtbox just for the value itself
+    /// </summary>
     public partial class CustomerBalanceForm : Form
     {
         private Customer Cust;
@@ -29,7 +34,7 @@ namespace SWE_Project_PALA
         {
             this.Close();
         }
-
+        //money got from customer, releases event to refresh the listbos
         private void btnTakeIn_Click(object sender, EventArgs e)
         {
             Cust.ChangeToAccountBalance(Math.Abs(Convert.ToInt32(txtBoxAccountBalance.Text)));
@@ -38,6 +43,7 @@ namespace SWE_Project_PALA
             Form.RefreshListBox(this, new EventArgs());
 
         }
+        //money spent from customer, releases event to refresh the listbos
 
         private void btn_expense_Click(object sender, EventArgs e)
         {

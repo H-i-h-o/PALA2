@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace SWE_Project_PALA
 {
+    /// <summary>
+    /// type email
+    /// </summary>
     public class Email
     {
         public string EmailAddress { private set; get; }
@@ -26,6 +29,8 @@ namespace SWE_Project_PALA
         {
             EmailAddress = emailAddress;
         }
+        // according to the email standard the string is checked if correct
+        // step by step each standard is checked
 
         public static bool CheckEmailInput(string emailAddress)
         {

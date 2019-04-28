@@ -10,6 +10,10 @@ using System.Windows.Forms;
 
 namespace SWE_Project_PALA
 {
+    /// <summary>
+    /// CustomerForms used to get the input of the user necessary to generate a user
+    /// Used as well to edit a user by giving the current information of the storred user
+    /// </summary>
     public partial class CustomerForm : Form
     {
         public event EventHandler NewCustomerAvailable;
@@ -24,7 +28,7 @@ namespace SWE_Project_PALA
             InitializeComponent();
             importedPerson = false;
         }
-
+        //constructor in case of customer editing
         public CustomerForm(Customer cust, Form1 mainForm)
         {
             InitializeComponent();
@@ -40,9 +44,8 @@ namespace SWE_Project_PALA
             txtBoxStreet.Text = cust.CustAdresse.Street;
             txtBoxStreetNr.Text = cust.CustAdresse.StreetNr.ToString();
             
-            importedPerson = true;
         }
-
+        // sends the customer to the customer list to add if his email is okay, everything else is checked elsewhere
         private void btn_Save_Click(object sender, EventArgs e)
         {
             if (importedPerson)
@@ -71,7 +74,8 @@ namespace SWE_Project_PALA
         {
             this.Close();
         }
-
+        //set txtbox to green if input right
+        #region green txtbox
         private void txtBoxFirstName_TextChanged(object sender, EventArgs e)
         {
             txtBoxFirstName.BackColor = System.Drawing.Color.Green;
@@ -121,7 +125,8 @@ namespace SWE_Project_PALA
             CustomerDeleteAvailable?.Invoke(this, new EventArgsCustomerChange(Cust));
 
         }
-
+        #endregion
+        //checks if everything is correct and enables btns
         private void CheckIfComplete()
         {
             if (txtBoxPostCode.Text.Length > 0 &&

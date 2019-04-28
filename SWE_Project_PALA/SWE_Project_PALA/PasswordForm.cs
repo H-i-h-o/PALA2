@@ -10,6 +10,10 @@ using System.Windows.Forms;
 
 namespace SWE_Project_PALA
 {
+    /// <summary>
+    /// form to get the password from the user in the beginning
+    /// 
+    /// </summary>
     public partial class PasswordForm : Form
     {
         public event EventHandler WriteToLogFileAvailable;
@@ -27,7 +31,7 @@ namespace SWE_Project_PALA
         private void ButtonOK_Click(object sender, EventArgs e)
         {
             tryCoutner++;
-
+            // only three wrong entries allowed, then a log file is written
             if (PasswordBox.Text == Password)
             {
                 PasswordWasOK = true;

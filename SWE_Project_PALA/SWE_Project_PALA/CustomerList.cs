@@ -8,6 +8,11 @@ using System.Windows.Forms;
 
 namespace SWE_Project_PALA
 {
+    /// <summary>
+    /// Customer List, stores Customer 
+    /// provides with methods like add customer and delete customer
+    /// as well as to print the list to a 
+    /// </summary>
     public class CustomerList
     {
         public List<Customer> CustList = new List<Customer>();
@@ -48,7 +53,7 @@ namespace SWE_Project_PALA
 
                 if(!EmailInList)
                 {
-                    CustList.Add(((EventArgsCustomerChange)e).Cust);
+                    CustList.Add(CustomerToAdd);
                     MemberCounter++;
                     CustomerListChanged();
                 }
@@ -58,12 +63,12 @@ namespace SWE_Project_PALA
                 }
             }
         }
-
+        //provides event to refresh the listview in the form1
         public void CustomerListChanged()
         {
             CustomerListChangedHappened?.Invoke(this, new EventArgs());
         }
-
+        //provides method to the customer form to delete a given customer from the list
         public void DeleteCustomer(object sender, EventArgs e)
         {
             if (e.GetType() == typeof(EventArgsCustomerChange))

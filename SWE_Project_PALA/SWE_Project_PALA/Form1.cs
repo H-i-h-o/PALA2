@@ -12,9 +12,16 @@ using SWE_Project_PALA.EventArgsFolder;
 
 namespace SWE_Project_PALA
 {
+    /// <summary>
+    /// main class of the application
+    /// sets the listviewbox
+    /// gridview tried, same structure to get a item like used for listview
+    /// listbox not implemented because of the lack of columns, still easiest to get a choosen item
+    /// </summary>
     public partial class Form1 : Form
     {
         public CustomerList CustList = new CustomerList();
+        //paths meant to locate the csv and the log files
         private static readonly string PathCList = Application.StartupPath + "\\CList_crypted.csv";
         private static readonly string PathLoginLogFile = Application.StartupPath + "\\LoginLogFile.csv";
         private static readonly string PathCustomerDeleteLogFile = Application.StartupPath + "\\CustomerDeleteLogFile.csv";
@@ -24,6 +31,7 @@ namespace SWE_Project_PALA
         {
             InitializeComponent();
         }
+        
         private void Form1_Load(object sender, EventArgs e)
         { 
 
@@ -89,7 +97,7 @@ namespace SWE_Project_PALA
                 CustList.MemberCounter = ((EventArgsCurrentCustNr) e).CurrentCustNr;
             }
         }
-
+        // refreshes the listview, either way with a sent list box from the event or the local list
         public void RefreshListBox(object sender, EventArgs e)
         {
             List<Customer> myCustList = new List<Customer>();

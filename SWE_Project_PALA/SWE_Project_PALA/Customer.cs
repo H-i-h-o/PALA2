@@ -116,7 +116,7 @@ namespace SWE_Project_PALA
         {
             return CustomerNumber + ", " + FirstName + ", " + LastName + ", " + EmailAddress.Print() + ", " + CustAdresse.ToString() + ", " + LastAccess.ToShortDateString() + ", " + AccountBalance;
         }
-        // sets the Customer up to a array used to show data in the 
+        // sets the Customer up to a array used to show data in the listview as a listviewitem
         public string[] GetListViewItemRange()
         {
             string[] arr = new string[11]

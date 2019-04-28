@@ -82,9 +82,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(39, 102);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(48, 13);
+            this.label3.Size = new System.Drawing.Size(36, 13);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Payment";
+            this.label3.Text = "value:";
             // 
             // txtBoxAccountBalance
             // 

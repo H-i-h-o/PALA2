@@ -20,6 +20,8 @@ namespace SWE_Project_PALA
 
             PasswordForm PWForm = new PasswordForm();
             PWForm.WriteToLogFileAvailable += new EventHandler(Form1.HandleLogFiles);
+
+            //access only with allowed password
             if ((PWForm.ShowDialog() == DialogResult.OK) && PWForm.PasswordWasOK)
             {
                 Application.Run(new Form1());
