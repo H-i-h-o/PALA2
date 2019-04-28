@@ -38,11 +38,11 @@ namespace SWE_Project_PALATests
         {
             TestCustomerList = new CustomerList();
             
-            TestCustomerList.CustList.Add(new Customer(4, "Patrick", "Gehmayr", "p.gehmayr@gmail.com", new Adresse("Streeter", "1", 4201, "Wels"),new DateTime(2010, 9, 20), -99));
-            TestCustomerList.CustList.Add(new Customer(3, "Laurenz", "Hiho", "l.hiho@mail.at", new Adresse("Hans", "5", 4201, "Wels"),new DateTime(2013, 2, 28), -50));
-            TestCustomerList.CustList.Add(new Customer(1, "Luigi", "Italiano", "luigi.italy@imail.com", new Adresse("Winden", "9", 2323, "Schwertberg"),new DateTime(2008, 6, 3), 100));
-            TestCustomerList.CustList.Add(new Customer(2, "Max", "Mustermann", "m.muster@mmail.max", new Adresse("Windegg", "166", 3324, "Mauthausen"),new DateTime(2018, 7, 20), 1300));
-            TestCustomerList.CustList.Add(new Customer(5, "Anna", "Huber", "huber.anna@hmail.at", new Adresse("Hinterstoßer", "133", 3434, "Perg"),new DateTime(2019, 3, 30), -3000));
+            TestCustomerList.CustList.Add(new Customer(4, "Patrick", "Gehmayr", "p.gehmayr@gmail.com", new Address("Streeter", "1", 4201, "Wels"),new DateTime(2010, 9, 20), -99));
+            TestCustomerList.CustList.Add(new Customer(3, "Laurenz", "Hiho", "l.hiho@mail.at", new Address("Hans", "5", 4201, "Wels"),new DateTime(2013, 2, 28), -50));
+            TestCustomerList.CustList.Add(new Customer(1, "Luigi", "Italiano", "luigi.italy@imail.com", new Address("Winden", "9", 2323, "Schwertberg"),new DateTime(2008, 6, 3), 100));
+            TestCustomerList.CustList.Add(new Customer(2, "Max", "Mustermann", "m.muster@mmail.max", new Address("Windegg", "166", 3324, "Mauthausen"),new DateTime(2018, 7, 20), 1300));
+            TestCustomerList.CustList.Add(new Customer(5, "Anna", "Huber", "huber.anna@hmail.at", new Address("Hinterstoßer", "133", 3434, "Perg"),new DateTime(2019, 3, 30), -3000));
             
             SortByCustomerNumber_expectedResult = new int[] {1, 2, 3, 4, 5};
             SortByFirstName_expectedResult = new int[] {5, 3, 1, 2, 4};
@@ -66,7 +66,7 @@ namespace SWE_Project_PALATests
 
         #region sortTests
         [TestMethod]
-        public void TestSortByCustomerNumberAscending_Test()
+        public void TestID21_SortByCustomerNumberAscending()
         {
             CustomerList TestList = new CustomerList();
             TestList.CustList = TestCustomerList.SortByCustomerNumber(false);
@@ -77,7 +77,7 @@ namespace SWE_Project_PALATests
         }
 
         [TestMethod]
-        public void TestSortByCustomerNumberDescending_Test()
+        public void TestID22_SortByCustomerNumberDescending()
         {
             CustomerList TestList = new CustomerList();
             TestList.CustList = TestCustomerList.SortByCustomerNumber(true);
@@ -88,7 +88,7 @@ namespace SWE_Project_PALATests
         }
 
         [TestMethod]
-        public void TestSortByFirstNameAscending_Test()
+        public void TestID23_SortByFirstNameAscending()
         {
             CustomerList TestList = new CustomerList();
             TestList.CustList = TestCustomerList.SortByFirstName(false);
@@ -99,7 +99,7 @@ namespace SWE_Project_PALATests
         }
 
         [TestMethod]
-        public void TestSortByFirstNameDescending_Test()
+        public void TestID24_SortByFirstNameDescending()
         {
             CustomerList TestList = new CustomerList();
             TestList.CustList = TestCustomerList.SortByFirstName(true);
@@ -110,7 +110,7 @@ namespace SWE_Project_PALATests
         }
 
         [TestMethod]
-        public void TestSortByLastNameAscending_Test()
+        public void TestID25_SortByLastNameAscending()
         {
             CustomerList TestList = new CustomerList();
             TestList.CustList = TestCustomerList.SortByLastName(false);
@@ -121,7 +121,7 @@ namespace SWE_Project_PALATests
         }
 
         [TestMethod]
-        public void TestSortByLastNameDescending_Test()
+        public void TestID26_SortByLastNameDescending()
         {
             CustomerList TestList = new CustomerList();
             TestList.CustList = TestCustomerList.SortByLastName(true);
@@ -132,7 +132,7 @@ namespace SWE_Project_PALATests
         }
 
         [TestMethod]
-        public void TestSortByEmailAscending_Test()
+        public void TestID27_SortByEmailAscending()
         {
             CustomerList TestList = new CustomerList();
             TestList.CustList = TestCustomerList.SortByEmail(false);
@@ -143,7 +143,7 @@ namespace SWE_Project_PALATests
         }
 
         [TestMethod]
-        public void TestSortByEmailDescending_Test()
+        public void TestID28_SortByEmailDescending()
         {
             CustomerList TestList = new CustomerList();
             TestList.CustList = TestCustomerList.SortByEmail(true);
@@ -154,7 +154,7 @@ namespace SWE_Project_PALATests
         }
 
         [TestMethod]
-        public void TestSortAccountBalanceAscending_Test()
+        public void TestID29_SortAccountBalanceAscending()
         {
             CustomerList TestList = new CustomerList();
             TestList.CustList = TestCustomerList.SortByAccountBalance(false);
@@ -165,7 +165,7 @@ namespace SWE_Project_PALATests
         }
 
         [TestMethod]
-        public void TestSortAccountBalanceDescending_Test()
+        public void TestID30_SortAccountBalanceDescending()
         {
             CustomerList TestList = new CustomerList();
             TestList.CustList = TestCustomerList.SortByAccountBalance(true);
@@ -176,7 +176,7 @@ namespace SWE_Project_PALATests
         }
 
         [TestMethod]
-        public void TestSortLastAccessAscending_Test()
+        public void TestID31_SortLastAccessAscending()
         {
             CustomerList TestList = new CustomerList();
             TestList.CustList = TestCustomerList.SortByLastAccess(false);
@@ -187,7 +187,7 @@ namespace SWE_Project_PALATests
         }
 
         [TestMethod]
-        public void TestSortLastAccessDescending_Test()
+        public void TestID32_SortLastAccessDescending()
         {
             CustomerList TestList = new CustomerList();
             TestList.CustList = TestCustomerList.SortByLastAccess(true);
@@ -202,7 +202,7 @@ namespace SWE_Project_PALATests
         #region filterTests
 
         [TestMethod]
-        public void FilterByFirstName_Test()
+        public void TestID33_FilterByFirstName()
         {
             CustomerList TestList = new CustomerList();
             TestList.CustList = TestCustomerList.FilterByFirstName(SearchFirstName);
@@ -221,7 +221,7 @@ namespace SWE_Project_PALATests
         }
 
         [TestMethod]
-        public void FilterByLastName_Test()
+        public void TestID34_FilterByLastName()
         {
             CustomerList TestList = new CustomerList();
             TestList.CustList = TestCustomerList.FilterByLastName(SearchLastName);
@@ -240,7 +240,7 @@ namespace SWE_Project_PALATests
         }
 
         [TestMethod]
-        public void FilterByEmail_Test()
+        public void TestID35_FilterByEmail()
         {
             CustomerList TestList = new CustomerList();
             TestList.CustList = TestCustomerList.FilterByEmail(SearchEmail);
@@ -259,7 +259,7 @@ namespace SWE_Project_PALATests
         }
 
         [TestMethod]
-        public void FilterByPostCode_Test()
+        public void TestID36_FilterByPostCode()
         {
             CustomerList TestList = new CustomerList();
             TestList.CustList = TestCustomerList.FilterByPostCode(SearchPostCode);
@@ -278,7 +278,7 @@ namespace SWE_Project_PALATests
         }
 
         [TestMethod]
-        public void FilterByCity_Test()
+        public void TestID37_FilterByCity()
         {
             CustomerList TestList = new CustomerList();
             TestList.CustList = TestCustomerList.FilterByCity(SearchCity);

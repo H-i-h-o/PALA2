@@ -14,17 +14,23 @@ namespace SWE_Project_PALA
         [STAThread]
         static void Main()
         {
-            
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-
-            PasswordForm PWForm = new PasswordForm();
-            PWForm.WriteToLogFileAvailable += new EventHandler(Form1.HandleLogFiles);
-
-            //access only with allowed password
-            if ((PWForm.ShowDialog() == DialogResult.OK) && PWForm.PasswordWasOK)
+            try
             {
-                Application.Run(new Form1());
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+
+                PasswordForm PWForm = new PasswordForm();
+                PWForm.WriteToLogFileAvailable += new EventHandler(Form1.HandleLogFiles);
+
+                //access only with allowed password
+                if ((PWForm.ShowDialog() == DialogResult.OK) && PWForm.PasswordWasOK)
+                {
+                    Application.Run(new Form1());
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("An unhandled exception occured. " + Environment.NewLine + ex.Message);
             }
         }
     }

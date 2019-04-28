@@ -19,12 +19,9 @@ namespace SWE_Project_PALATests
         }
 
         [TestMethod]
-        public void TestClassCrypto_Test1_successful()
+        public void TestID01_Crypto_successful()
         {
             string[] DecodedStrings = SWE_Project_PALA.Crypto.DecodeLine(SWE_Project_PALA.Crypto.EncodeLine(Input_TestCase1));
-            //Assert.IsTrue(Input_TestCase1 == DecodedStrings);
-            //Assert.AreEqual(Input_TestCase1; DecodedStrings);
-            //Assert.AreSame(Input_TestCase1; DecodedStrings);
 
             bool AllStringsEqual = true;
 
@@ -43,7 +40,7 @@ namespace SWE_Project_PALATests
         }
 
         [TestMethod]
-        public void TestClassCrypto_Test2_successful()
+        public void TestID02_Crypto_successful()
         {
             string[] DecodedStrings = SWE_Project_PALA.Crypto.DecodeLine(SWE_Project_PALA.Crypto.EncodeLine(Input_TestCase2));
 
@@ -64,7 +61,7 @@ namespace SWE_Project_PALATests
         }
 
         [TestMethod]
-        public void TestClassCrypto_Test3_exception()
+        public void TestID03_Crypto_exception()
         {
             bool ExceptionOccured = false;
             try
@@ -73,6 +70,7 @@ namespace SWE_Project_PALATests
             }
             catch(Exception ex)
             {
+                string Message = ex.Message;
                 ExceptionOccured = true;
             }
             Assert.IsTrue(ExceptionOccured, "As expected an exception occured!");
